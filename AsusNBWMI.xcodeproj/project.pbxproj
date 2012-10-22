@@ -9,7 +9,37 @@
 /* Begin PBXBuildFile section */
 		27F96DFF16333B72003A6255 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27F96DFD16333B72003A6255 /* InfoPlist.strings */; };
 		27F96E0216333B72003A6255 /* AsusNBWMI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27F96E0116333B72003A6255 /* AsusNBWMI.cpp */; };
+		27F96E0E16333BCA003A6255 /* WMIHIKeyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27F96E0A16333BCA003A6255 /* WMIHIKeyboard.cpp */; };
+		27F96E0F16333BCA003A6255 /* WMIHIKeyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F96E0B16333BCA003A6255 /* WMIHIKeyboard.h */; };
+		27F96E1016333BCA003A6255 /* WMIHIKeyboardDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27F96E0C16333BCA003A6255 /* WMIHIKeyboardDevice.cpp */; };
+		27F96E1116333BCA003A6255 /* WMIHIKeyboardDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F96E0D16333BCA003A6255 /* WMIHIKeyboardDevice.h */; };
+		27F96E1E16333E14003A6255 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27F96E1C16333E14003A6255 /* InfoPlist.strings */; };
+		27F96E2116333E14003A6255 /* AsusWMIController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27F96E2016333E14003A6255 /* AsusWMIController.cpp */; };
+		27F96E2916333F1B003A6255 /* AsusWMIController.kext in CopyFiles */ = {isa = PBXBuildFile; fileRef = 27F96E1816333E14003A6255 /* AsusWMIController.kext */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		27F96E2616333F09003A6255 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27F96DEA16333B72003A6255 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27F96E1716333E14003A6255;
+			remoteInfo = AsusWMIController;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		27F96E2816333F0D003A6255 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				27F96E2916333F1B003A6255 /* AsusWMIController.kext in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		27F96DF516333B72003A6255 /* AsusNBWMI.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AsusNBWMI.kext; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -19,10 +49,27 @@
 		27F96E0016333B72003A6255 /* AsusNBWMI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AsusNBWMI.h; sourceTree = "<group>"; };
 		27F96E0116333B72003A6255 /* AsusNBWMI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AsusNBWMI.cpp; sourceTree = "<group>"; };
 		27F96E0316333B72003A6255 /* AsusNBWMI-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AsusNBWMI-Prefix.pch"; sourceTree = "<group>"; };
+		27F96E0A16333BCA003A6255 /* WMIHIKeyboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WMIHIKeyboard.cpp; sourceTree = "<group>"; };
+		27F96E0B16333BCA003A6255 /* WMIHIKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMIHIKeyboard.h; sourceTree = "<group>"; };
+		27F96E0C16333BCA003A6255 /* WMIHIKeyboardDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WMIHIKeyboardDevice.cpp; sourceTree = "<group>"; };
+		27F96E0D16333BCA003A6255 /* WMIHIKeyboardDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMIHIKeyboardDevice.h; sourceTree = "<group>"; };
+		27F96E1816333E14003A6255 /* AsusWMIController.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AsusWMIController.kext; sourceTree = BUILT_PRODUCTS_DIR; };
+		27F96E1B16333E14003A6255 /* AsusWMIController-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AsusWMIController-Info.plist"; sourceTree = "<group>"; };
+		27F96E1D16333E14003A6255 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		27F96E1F16333E14003A6255 /* AsusWMIController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AsusWMIController.h; sourceTree = "<group>"; };
+		27F96E2016333E14003A6255 /* AsusWMIController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AsusWMIController.cpp; sourceTree = "<group>"; };
+		27F96E2216333E14003A6255 /* AsusWMIController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AsusWMIController-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		27F96DF016333B72003A6255 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27F96E1316333E14003A6255 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -35,7 +82,9 @@
 		27F96DE816333B72003A6255 = {
 			isa = PBXGroup;
 			children = (
+				27F96E0916333B9F003A6255 /* WMIKeyboard */,
 				27F96DFA16333B72003A6255 /* AsusNBWMI */,
+				27F96E1916333E14003A6255 /* AsusWMIController */,
 				27F96DF716333B72003A6255 /* Frameworks */,
 				27F96DF616333B72003A6255 /* Products */,
 			);
@@ -45,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				27F96DF516333B72003A6255 /* AsusNBWMI.kext */,
+				27F96E1816333E14003A6255 /* AsusWMIController.kext */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,10 +135,50 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		27F96E0916333B9F003A6255 /* WMIKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				27F96E0A16333BCA003A6255 /* WMIHIKeyboard.cpp */,
+				27F96E0B16333BCA003A6255 /* WMIHIKeyboard.h */,
+				27F96E0C16333BCA003A6255 /* WMIHIKeyboardDevice.cpp */,
+				27F96E0D16333BCA003A6255 /* WMIHIKeyboardDevice.h */,
+			);
+			name = WMIKeyboard;
+			sourceTree = "<group>";
+		};
+		27F96E1916333E14003A6255 /* AsusWMIController */ = {
+			isa = PBXGroup;
+			children = (
+				27F96E1F16333E14003A6255 /* AsusWMIController.h */,
+				27F96E2016333E14003A6255 /* AsusWMIController.cpp */,
+				27F96E1A16333E14003A6255 /* Supporting Files */,
+			);
+			path = AsusWMIController;
+			sourceTree = "<group>";
+		};
+		27F96E1A16333E14003A6255 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				27F96E1B16333E14003A6255 /* AsusWMIController-Info.plist */,
+				27F96E1C16333E14003A6255 /* InfoPlist.strings */,
+				27F96E2216333E14003A6255 /* AsusWMIController-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
 		27F96DF116333B72003A6255 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27F96E0F16333BCA003A6255 /* WMIHIKeyboard.h in Headers */,
+				27F96E1116333BCA003A6255 /* WMIHIKeyboardDevice.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27F96E1416333E14003A6255 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -107,14 +197,35 @@
 				27F96DF116333B72003A6255 /* Headers */,
 				27F96DF216333B72003A6255 /* Resources */,
 				27F96DF316333B72003A6255 /* Rez */,
+				27F96E2816333F0D003A6255 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				27F96E2716333F09003A6255 /* PBXTargetDependency */,
+			);
+			name = AsusNBWMI;
+			productName = AsusNBWMI;
+			productReference = 27F96DF516333B72003A6255 /* AsusNBWMI.kext */;
+			productType = "com.apple.product-type.kernel-extension";
+		};
+		27F96E1716333E14003A6255 /* AsusWMIController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27F96E2316333E14003A6255 /* Build configuration list for PBXNativeTarget "AsusWMIController" */;
+			buildPhases = (
+				27F96E1216333E14003A6255 /* Sources */,
+				27F96E1316333E14003A6255 /* Frameworks */,
+				27F96E1416333E14003A6255 /* Headers */,
+				27F96E1516333E14003A6255 /* Resources */,
+				27F96E1616333E14003A6255 /* Rez */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = AsusNBWMI;
-			productName = AsusNBWMI;
-			productReference = 27F96DF516333B72003A6255 /* AsusNBWMI.kext */;
+			name = AsusWMIController;
+			productName = AsusWMIController;
+			productReference = 27F96E1816333E14003A6255 /* AsusWMIController.kext */;
 			productType = "com.apple.product-type.kernel-extension";
 		};
 /* End PBXNativeTarget section */
@@ -139,6 +250,7 @@
 			projectRoot = "";
 			targets = (
 				27F96DF416333B72003A6255 /* AsusNBWMI */,
+				27F96E1716333E14003A6255 /* AsusWMIController */,
 			);
 		};
 /* End PBXProject section */
@@ -152,10 +264,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		27F96E1516333E14003A6255 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27F96E1E16333E14003A6255 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXRezBuildPhase section */
 		27F96DF316333B72003A6255 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27F96E1616333E14003A6255 /* Rez */ = {
 			isa = PBXRezBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -170,16 +297,42 @@
 			buildActionMask = 2147483647;
 			files = (
 				27F96E0216333B72003A6255 /* AsusNBWMI.cpp in Sources */,
+				27F96E0E16333BCA003A6255 /* WMIHIKeyboard.cpp in Sources */,
+				27F96E1016333BCA003A6255 /* WMIHIKeyboardDevice.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27F96E1216333E14003A6255 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27F96E2116333E14003A6255 /* AsusWMIController.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		27F96E2716333F09003A6255 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27F96E1716333E14003A6255 /* AsusWMIController */;
+			targetProxy = 27F96E2616333F09003A6255 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		27F96DFD16333B72003A6255 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				27F96DFE16333B72003A6255 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		27F96E1C16333E14003A6255 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27F96E1D16333E14003A6255 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -270,6 +423,38 @@
 			};
 			name = Release;
 		};
+		27F96E2416333E14003A6255 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.0d1;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AsusWMIController/AsusWMIController-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				INFOPLIST_FILE = "AsusWMIController/AsusWMIController-Info.plist";
+				MODULE_NAME = com.apple.AsusWMIController;
+				MODULE_VERSION = 1.0.0d1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = kext;
+			};
+			name = Debug;
+		};
+		27F96E2516333E14003A6255 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.0d1;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AsusWMIController/AsusWMIController-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				INFOPLIST_FILE = "AsusWMIController/AsusWMIController-Info.plist";
+				MODULE_NAME = com.apple.AsusWMIController;
+				MODULE_VERSION = 1.0.0d1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = kext;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -289,6 +474,16 @@
 				27F96E0816333B72003A6255 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27F96E2316333E14003A6255 /* Build configuration list for PBXNativeTarget "AsusWMIController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27F96E2416333E14003A6255 /* Debug */,
+				27F96E2516333E14003A6255 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

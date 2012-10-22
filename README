@@ -1,0 +1,3 @@
+Asus WMI Driver for Hotkeys
+
+It was ported from linux by hotkoffy(insanelymac) and has been modified to the Asus Notebooks. This driver allows Asus Notebook with WMI device to receive the events and perform the particular function to the event received. It depends on the method inside the dsdt for working.
