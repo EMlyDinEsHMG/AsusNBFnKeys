@@ -17,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>KEXT</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.7.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>1.7.2</string>
 	<key>IOKitPersonalities</key>
 	<dict>
 		<key>AsusWMIController</key>
@@ -37,15 +37,33 @@
 			<key>IONameMatch</key>
 			<array>
 				<string>PNP0c14</string>
+				<string>ASU010</string>
+				<string>ASU0100</string>
+				<string>ASU0010</string>
 			</array>
+			<key>Preferences</key>
+			<dict>
+				<key>HasKeyboardBLight</key>
+				<false/>
+				<key>HasALSensor</key>
+				<false/>
+				<key>ALS Turned on at boot</key>
+				<false/>
+				<key>KeyboardBLightLevelAtBoot</key>
+				<integer>1</integer>
+				<key>HasMediaButtons</key>
+				<true/>
+				<key>UsingAsusBackLightDriver</key>
+				<false/>
+			</dict>
 		</dict>
 	</dict>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2012  Hotkoffy and EMlyDinEsHMG. All rights reserved.</string>
+	<string>Copyright © 2012-2013 EMlyDinEsH(OSXLatitude) Credits: Hotkoffy(Insanelymac). All rights reserved.</string>
 	<key>OSBundleLibraries</key>
 	<dict>
-		<key>com.apple.AsusNBWMI</key>
-		<string>1.0</string>
+		<key>com.apple.AsusNBFnKeys</key>
+		<string>1.7.2</string>
 		<key>com.apple.iokit.IOACPIFamily</key>
 		<string>1.0d1</string>
 		<key>com.apple.kpi.iokit</key>

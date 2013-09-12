@@ -1,10 +1,8 @@
 /*
- *  Copyright (c) 2012 Hotkoffy and EMlyDinEsHMG. All rights reserved.
+ *  Copyright (c) 2012 - 2013 EMlyDinEsH(OSXLatitude). All rights reserved.
  *
- *  AsusNBWMI Driver ported from Linux by Hotkoffy and modified to Asus by EMlyDinEsHMG
  *
- *  AsusNBWMI.h
- *  AsusNBWMI
+ *  AsusNBFnKeys.h
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -21,8 +19,8 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef _AsusNBWMI_h
-#define _AsusNBWMI_h
+#ifndef _AsusNBFnKeys_h
+#define _AsusNBFnKeys_h
 
 #include <IOKit/pwr_mgt/IOPMPowerSource.h>
 #include <IOKit/acpi/IOACPIPlatformDevice.h>
@@ -33,7 +31,7 @@
 #include <IOKit/IOlib.h>
 #include <libkern/OSTypes.h>
 
-#include  "WMIHIKeyboardDevice.h"
+#include  "FnKeysHIKeyboardDevice.h"
 
 
 
@@ -69,13 +67,13 @@ enum
 };
 
 
-class AsusNBWMI : public IOService
+class AsusNBFnKeys : public IOService
 {
-    OSDeclareDefaultStructors(AsusNBWMI)
+    OSDeclareDefaultStructors(AsusNBFnKeys)
     
 protected:
     IOACPIPlatformDevice * WMIDevice;
-    WMIHIKeyboardDevice * _keyboardDevice;
+    FnKeysHIKeyboardDevice * _keyboardDevice;
     
     OSDictionary * properties;
     
@@ -95,18 +93,19 @@ public:
     
 protected:
     OSDictionary* getDictByUUID(const char * guid);
-    IOReturn setEvent(const char * guid, UInt32 methodID);
+    IOReturn enableFnKeyEvents(const char * guid, UInt32 methodID);
+    
     
     virtual void enableEvent();
     virtual void disableEvent();
     virtual void handleMessage(int code);
-    virtual void rfkillEvent();
+    virtual void processFnKeyEvents(int code, bool alsMode, int kLoopCount, bool asusBlightMode, int bLoopCount);
     
     void getDeviceStatus(const char * guid, UInt32 methodId, UInt32 deviceId, UInt32 *status);
     void setDeviceStatus(const char * guid, UInt32 methodId, UInt32 deviceId, UInt32 *status);
     void setDevice(const char * guid, UInt32 methodId, UInt32 *status);
     
-    static const wmiKeyMap keyMap[];
+    static const FnKeysKeyMap keyMap[];
     
 private:
     int parse_wdg(OSDictionary *dict);
@@ -125,4 +124,4 @@ private:
     
 };
 
-#endif //_AsusNBWMI_h
+#endif //_AsusNBFnKeys_h

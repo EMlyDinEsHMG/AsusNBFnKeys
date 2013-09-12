@@ -1,10 +1,12 @@
 /*
- *  Copyright (c) 2012 Hotkoffy and EMlyDinEsHMG. All rights reserved.
+ *  Copyright (c) 2012 - 2013 EMlyDinEsH(OSXLatitude). All rights reserved.
  *
- *  AsusNBWMI Driver ported from Linux by Hotkoffy and modified to Asus by EMlyDinEsHMG
+ *  Asus Notebooks Fn keys Driver v1.7.2 by EMlyDinEsH for Mac OSX
  *
- *  AsusNBWMI.cpp
- *  IOWMIFamily
+ *  Credits: Hotkoffy(insanelymac) for initial source
+ *
+ *  AsusNBFnKeys.cpp
+ *  
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -23,7 +25,7 @@
 
 #include <IOKit/hidsystem/ev_keymap.h>
 
-#include "AsusNBWMI.h"
+#include "AsusNBFnKeys.h"
 
 
 #define DEBUG_START 0
@@ -46,7 +48,7 @@
  * Return:  0-255  Success, the byte was parsed correctly
  *          -1     Error, an invalid character was supplied
  */
-int AsusNBWMI::wmi_parse_hexbyte(const UInt8 *src)
+int AsusNBFnKeys::wmi_parse_hexbyte(const UInt8 *src)
 {
 	unsigned int x; /* For correct wrapping */
 	int h;
@@ -83,7 +85,7 @@ int AsusNBWMI::wmi_parse_hexbyte(const UInt8 *src)
  *
  * Byte swap a binary GUID to match it's real GUID value
  */
-void AsusNBWMI::wmi_swap_bytes(UInt8 *src, UInt8 *dest)
+void AsusNBFnKeys::wmi_swap_bytes(UInt8 *src, UInt8 *dest)
 {
 	int i;
 	
@@ -110,7 +112,7 @@ void AsusNBWMI::wmi_swap_bytes(UInt8 *src, UInt8 *dest)
  * Return:  'true'   @dest contains binary GUID
  *          'false'  @dest contents are undefined
  */
-bool AsusNBWMI::wmi_parse_guid(const UInt8 *src, UInt8 *dest)
+bool AsusNBFnKeys::wmi_parse_guid(const UInt8 *src, UInt8 *dest)
 {
 	static const int size[] = { 4, 2, 2, 2, 6 };
 	int i, j, v;
@@ -135,7 +137,7 @@ bool AsusNBWMI::wmi_parse_guid(const UInt8 *src, UInt8 *dest)
  * wmi_dump_wdg - dumps tables to dmesg
  * @src: guid_block *
  */
-void AsusNBWMI::wmi_dump_wdg(struct guid_block *g)
+void AsusNBFnKeys::wmi_dump_wdg(struct guid_block *g)
 {
 	char guid_string[37];
 	
@@ -166,7 +168,7 @@ void AsusNBWMI::wmi_dump_wdg(struct guid_block *g)
  * wmi_data2Str - converts binary guid to ascii guid
  *
  */
-int AsusNBWMI::wmi_data2Str(const char *in, char *out)
+int AsusNBFnKeys::wmi_data2Str(const char *in, char *out)
 {
 	int i;
 	
@@ -196,7 +198,7 @@ int AsusNBWMI::wmi_data2Str(const char *in, char *out)
  * flagsToStr - converts binary flag to ascii flag
  *
  */
-OSString * AsusNBWMI::flagsToStr(UInt8 flags)
+OSString * AsusNBFnKeys::flagsToStr(UInt8 flags)
 {
 	char str[80];
 	char *pos = str;
@@ -239,7 +241,7 @@ OSString * AsusNBWMI::flagsToStr(UInt8 flags)
  * wmi_wdg2reg - adds the WDG structure to a dictionary
  *
  */
-void AsusNBWMI::wmi_wdg2reg(struct guid_block *g, OSArray *array, OSArray *dataArray)
+void AsusNBFnKeys::wmi_wdg2reg(struct guid_block *g, OSArray *array, OSArray *dataArray)
 {
 	char guid_string[37];
 	char object_id_string[3];
@@ -268,7 +270,7 @@ void AsusNBWMI::wmi_wdg2reg(struct guid_block *g, OSArray *array, OSArray *dataA
 }
 
 
-OSDictionary * AsusNBWMI::readDataBlock(char *str)
+OSDictionary * AsusNBFnKeys::readDataBlock(char *str)
 {
 	OSObject	*wqxx;
 	OSData		*data = NULL;
@@ -301,7 +303,7 @@ OSDictionary * AsusNBWMI::readDataBlock(char *str)
 /*
  * Parse the _WDG method for the GUID data blocks
  */
-int AsusNBWMI::parse_wdg(OSDictionary *dict)
+int AsusNBFnKeys::parse_wdg(OSDictionary *dict)
 {
 	UInt32 i, total;
 	OSObject	*wdg;
@@ -346,31 +348,32 @@ int AsusNBWMI::parse_wdg(OSDictionary *dict)
 
 #define super IOService
 
-OSDefineMetaClassAndStructors(AsusNBWMI, IOService)
+OSDefineMetaClassAndStructors(AsusNBFnKeys, IOService)
 
 
-bool AsusNBWMI::init(OSDictionary *dict)
+bool AsusNBFnKeys::init(OSDictionary *dict)
 {
 
 	bool result = super::init(dict);
 	properties = dict;
-	
+    DEBUG_LOG("%s:\n", this->getName());
 	return result;
 }
 
-void AsusNBWMI::free(void)
+void AsusNBFnKeys::free(void)
 {
 	DEBUG_LOG("%s: Free\n", this->getName());
 	super::free();
 }
 
-IOService * AsusNBWMI::probe(IOService *provider, SInt32 *score)
+IOService * AsusNBFnKeys::probe(IOService *provider, SInt32 *score)
 {
 	IOService *result = super::probe(provider, score);
+    DEBUG_LOG("%s:\n", this->getName());
     return result;
 }
 
-void AsusNBWMI::stop(IOService *provider)
+void AsusNBFnKeys::stop(IOService *provider)
 {
 	DEBUG_LOG("%s: Stop\n", this->getName());
 	
@@ -388,7 +391,7 @@ static IOPMPowerState powerStateArray[ kPowerStateCount ] =
 };
 
 
-bool AsusNBWMI::start(IOService *provider)
+bool AsusNBFnKeys::start(IOService *provider)
 {
 	if(!provider || !super::start( provider ))
 	{
@@ -411,7 +414,8 @@ bool AsusNBWMI::start(IOService *provider)
 	provider->joinPMtree(this);
 	
 	this->registerService(0);
-	
+    
+    	
 	return true;
 }
 
@@ -420,7 +424,7 @@ bool AsusNBWMI::start(IOService *provider)
  * Nothing to do for the moment
  *
  */
-IOReturn AsusNBWMI::setPowerState(unsigned long powerStateOrdinal, IOService *policyMaker)
+IOReturn AsusNBFnKeys::setPowerState(unsigned long powerStateOrdinal, IOService *policyMaker)
 {
 	if (kPowerStateOff == powerStateOrdinal)
 	{
@@ -439,11 +443,11 @@ IOReturn AsusNBWMI::setPowerState(unsigned long powerStateOrdinal, IOService *po
 
 
 #pragma mark -
-#pragma mark AsusNBWMI Methods
+#pragma mark AsusNBFnKeys Methods
 #pragma mark -
 
 
-IOReturn AsusNBWMI::message( UInt32 type, IOService * provider, void * argument)
+IOReturn AsusNBFnKeys::message( UInt32 type, IOService * provider, void * argument)
 {
 	if (type == kIOACPIMessageDeviceNotification)
 	{
@@ -492,26 +496,49 @@ IOReturn AsusNBWMI::message( UInt32 type, IOService * provider, void * argument)
 }
 
 
-void AsusNBWMI::handleMessage(int code)
+//
+//Dispatching Fn key event to Mac keyboard
+//
+void AsusNBFnKeys::handleMessage(int code)
 {
 	_keyboardDevice->keyPressed(code);
 }
 
-
-/*
- *
- * Nothing to do in the base class
- */
-void AsusNBWMI::rfkillEvent()
+//
+//Process Fn key event for ALS
+//
+void AsusNBFnKeys::processFnKeyEvents(int code, bool alsMode,int kLoopCount, bool asusBlightMode, int bLoopCount)
 {
-    
+    //Ambient Light Sensor Mode sends either 4 Brightness Up/Down events
+    if(alsMode)
+    {
+            
+        for(int i =0; i < kLoopCount; i++)
+            _keyboardDevice->keyPressed(code);
+           
+        DEBUG_LOG("AsusNBFnKeys: Loop Count %d, Dispatch Key %d(0x%x)\n",kLoopCount, code, code);
+    }
+    else if(asusBlightMode || bLoopCount>0)
+    {
+        for (int j = 0; j < bLoopCount; j++)
+            _keyboardDevice->keyPressed(code);
+        
+        DEBUG_LOG("AsusNBFnKeys: Loop Count %d, Dispatc Key %d(0x%x)\n",bLoopCount, code,code);
+            
+    }
+    else
+    {
+        _keyboardDevice->keyPressed(code);
+        DEBUG_LOG("AsusNBFnKeys: Dispatch Key %d(0x%x)\n", code, code);
+    }
 }
 
 
+
 /*
  *
  */
-void AsusNBWMI::getDeviceStatus(const char * guid, UInt32 methodId, UInt32 deviceId, UInt32 *status)
+void AsusNBFnKeys::getDeviceStatus(const char * guid, UInt32 methodId, UInt32 deviceId, UInt32 *status)
 {
 	DEBUG_LOG("%s: getDeviceStatus()\n", this->getName());
 	
@@ -545,7 +572,7 @@ void AsusNBWMI::getDeviceStatus(const char * guid, UInt32 methodId, UInt32 devic
 /*
  *
  */
-void AsusNBWMI::setDeviceStatus(const char * guid, UInt32 methodId, UInt32 deviceId, UInt32 *status)
+void AsusNBFnKeys::setDeviceStatus(const char * guid, UInt32 methodId, UInt32 deviceId, UInt32 *status)
 {
 	DEBUG_LOG("%s: setDeviceStatus()\n", this->getName());
 	
@@ -582,7 +609,7 @@ void AsusNBWMI::setDeviceStatus(const char * guid, UInt32 methodId, UInt32 devic
 	return;
 }
 
-void AsusNBWMI::setDevice(const char * guid, UInt32 methodId, UInt32 *status)
+void AsusNBFnKeys::setDevice(const char * guid, UInt32 methodId, UInt32 *status)
 {
 	DEBUG_LOG("%s: setDevice(%d)\n", this->getName(), (int)*status);
 	
@@ -619,7 +646,7 @@ void AsusNBWMI::setDevice(const char * guid, UInt32 methodId, UInt32 *status)
 }
 
 
-OSDictionary* AsusNBWMI::getDictByUUID(const char * guid)
+OSDictionary* AsusNBFnKeys::getDictByUUID(const char * guid)
 {
 	UInt32 i;
 	OSDictionary	*dict = NULL;
@@ -639,15 +666,16 @@ OSDictionary* AsusNBWMI::getDictByUUID(const char * guid)
 }
 
 
-IOReturn AsusNBWMI::setEvent(const char * guid, UInt32 methodId)
+IOReturn AsusNBFnKeys::enableFnKeyEvents(const char * guid, UInt32 methodId)
 {
-	
+   
     //Asus WMI Specific Method Inside the DSDT
-    //Calling the Method INIT from the DSDT to enable the Hotkey Event variable in DSDT
-    WMIDevice->evaluateObject("INIT", NULL, NULL,NULL);
+    //Calling the Asus Method INIT from the DSDT to enable the Hotkey Events
+    WMIDevice->evaluateObject("INIT", NULL, NULL, NULL);
     
-	return kIOReturnSuccess;
+	return kIOReturnSuccess;//return always success
 }
+
 
 
 #pragma mark -
@@ -655,13 +683,13 @@ IOReturn AsusNBWMI::setEvent(const char * guid, UInt32 methodId)
 #pragma mark -
 
 
-void AsusNBWMI::enableEvent()
+void AsusNBFnKeys::enableEvent()
 {
-	DEBUG_LOG("%s: AsusNBWMI::enableEvent()\n", this->getName());
+	DEBUG_LOG("%s: AsusNBFnKeys::enableEvent()\n", this->getName());
 }
 
 
-void AsusNBWMI::disableEvent()
+void AsusNBFnKeys::disableEvent()
 {
 	if (_keyboardDevice)
 	{

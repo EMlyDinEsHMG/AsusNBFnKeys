@@ -1,10 +1,9 @@
 /*
- *  Copyright (c) 2012 Hotkoffy and EMlyDinEsHMG. All rights reserved.
+ *  Copyright (c) 2012 - 2013 EMlyDinEsH(OSXLatitude). All rights reserved.
  *
- *  IOWMIController Driver ported from Linux by Hotkoffy and modified to Asus by EMlyDinEsHMG
  *
- *  WMIHIDKeyboard.h
- *  IOWMIFamily
+ *  FnKeysHIDKeyboard.h
+ *  
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -21,19 +20,19 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef _WMIHIDKeyboard_h
-#define _WMIHIDKeyboard_h
+#ifndef _FnKeysHIDKeyboard_h
+#define _FnKeysHIDKeyboard_h
 
 #include <IOKit/hidsystem/IOHIKeyboard.h>
 
-class WMIHIKeyboardDevice;
+class FnKeysHIKeyboardDevice;
 
-class WMIHIKeyboard : public IOHIKeyboard
+class FnKeysHIKeyboard : public IOHIKeyboard
 {
-	OSDeclareDefaultStructors(WMIHIKeyboard)
+	OSDeclareDefaultStructors(FnKeysHIKeyboard)
 	
 private:
-	WMIHIKeyboardDevice *Device;
+	FnKeysHIKeyboardDevice *Device;
 	clock_sec_t  lastEventSecs;
 	clock_usec_t lastEventMicrosecs;
 	

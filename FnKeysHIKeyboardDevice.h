@@ -1,10 +1,9 @@
 /*
- *  Copyright (c) 2012 Hotkoffy and EMlyDinEsHMG. All rights reserved.
+ *  Copyright (c) 2012 - 2013 EMlyDinEsH(OSXLatitude). All rights reserved.
  *
- *  IOWMIController Driver ported from Linux by Hotkoffy and modified to Asus by EMlyDinEsHMG
  *
- *  WMIHIKeyboardDevice.h
- *  IOWMIFamily
+ *  FnKeysHIKeyboardDevice.h
+ *  
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -21,8 +20,8 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef _WMIHIKeyboardDevice_h
-#define _WMIHIKeyboardDevice_h
+#ifndef _FnKeysHIKeyboardDevice_h
+#define _FnKeysHIKeyboardDevice_h
 
 #include <IOKit/IOService.h>
 
@@ -31,18 +30,18 @@ typedef struct  {
 	UInt16 in;
 	UInt8 out;
 	const char *description;
-} wmiKeyMap;
+} FnKeysKeyMap;
 
 
 
-class AsusNBWMI;
+class AsusNBFnKeys;
 
-class WMIHIKeyboardDevice : public IOService
+class FnKeysHIKeyboardDevice : public IOService
 {
-	OSDeclareDefaultStructors(WMIHIKeyboardDevice);
+	OSDeclareDefaultStructors(FnKeysHIKeyboardDevice);
 	
 private:
-	AsusNBWMI *wmi;
+	AsusNBFnKeys *FnKeys;
 	
 public:
 	virtual bool attach(IOService * provider);
@@ -52,8 +51,8 @@ public:
 	
 	//IOReturn message( UInt32 type, IOService * provider, void * argument);
 
-	const wmiKeyMap * keyMap;
-	void setKeyMap(const wmiKeyMap * _keyMap);
+	const FnKeysKeyMap * keyMap;
+	void setKeyMap(const FnKeysKeyMap * _keyMap);
 	
 };
 

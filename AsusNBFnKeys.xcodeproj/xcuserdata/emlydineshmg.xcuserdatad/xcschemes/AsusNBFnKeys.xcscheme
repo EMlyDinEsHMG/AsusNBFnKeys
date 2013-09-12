@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "27F96DF416333B72003A6255"
-               BuildableName = "AsusNBWMI.kext"
-               BlueprintName = "AsusNBWMI"
-               ReferencedContainer = "container:AsusNBWMI.xcodeproj">
+               BuildableName = "AsusNBFnKeys.kext"
+               BlueprintName = "AsusNBFnKeys"
+               ReferencedContainer = "container:AsusNBFnKeys.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -54,6 +54,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "AsusNBFnKeys"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

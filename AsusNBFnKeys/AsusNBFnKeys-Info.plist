@@ -17,21 +17,21 @@
 	<key>CFBundlePackageType</key>
 	<string>KEXT</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.7.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>1.7.2</string>
 	<key>OSBundleCompatibleVersion</key>
-	<string>1.0</string>
+	<string>1.7.2</string>
 	<key>IOKitPersonalities</key>
 	<dict>
-		<key>AsusWMI</key>
+		<key>AsusNBFnKeys</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
 			<string>com.apple.${PRODUCT_NAME:rfc1034identifier}</string>
 			<key>IOClass</key>
-			<string>AsusNBWMI</string>
+			<string>AsusNBFnKeys</string>
 			<key>IOProviderClass</key>
 			<string>IOACPIPlatformDevice</string>
 			<key>IOProbeScore</key>
@@ -41,20 +41,20 @@
 				<string>PNP0c14</string>
 			</array>
 		</dict>
-		<key>WMIHIKeyboard</key>
+		<key>FnKeysHIKeyboard</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
 			<string>com.apple.${PRODUCT_NAME:rfc1034identifier}</string>
 			<key>IOClass</key>
-			<string>WMIHIKeyboard</string>
+			<string>FnKeysHIKeyboard</string>
 			<key>IOProviderClass</key>
-			<string>WMIHIKeyboardDevice</string>
+			<string>FnKeysHIKeyboardDevice</string>
 			<key>IONameMatch</key>
-			<string>WMIHIKeyboardDevice</string>
+			<string>FnKeysHIKeyboardDevice</string>
 		</dict>
 	</dict>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2012  Hotkoffy and EMlyDinEsHMG. All rights reserved.</string>
+	<string>Copyright © 2012-2013  EMlyDinEsH(OSXLatitude) Credits: Hotkoffy(Insanelymac). All rights reserved.</string>
 	<key>OSBundleLibraries</key>
 	<dict>
 		<key>com.apple.kpi.unsupported</key>

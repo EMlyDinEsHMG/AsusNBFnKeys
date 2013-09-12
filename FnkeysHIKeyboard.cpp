@@ -1,10 +1,9 @@
 /*
- *  Copyright (c) 2012 Hotkoffy and EMlyDinEsHMG. All rights reserved.
+ *  Copyright (c) 2012 - 2013 EMlyDinEsH(OSXLatitude). All rights reserved.
  *
- *  IOWMIController Driver ported from Linux by Hotkoffy and modified to Asus by EMlyDinEsHMG
  *
- *  WMIHIDKeyboard.cpp
- *  IOWMIFamily
+ *  FnKeysHIDKeyboard.cpp
+ *  
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -23,12 +22,12 @@
 
 #include <IOKit/acpi/IOACPIPlatformDevice.h>
 #include <IOKit/hidsystem/ev_keymap.h>
-#include "WMIHIKeyboard.h"
+#include "FnKeysHIKeyboard.h"
 
 #define super IOHIKeyboard
 
 
-OSDefineMetaClassAndStructors(WMIHIKeyboard, IOHIKeyboard)
+OSDefineMetaClassAndStructors(FnKeysHIKeyboard, IOHIKeyboard)
 
 
 #pragma mark -
@@ -36,13 +35,13 @@ OSDefineMetaClassAndStructors(WMIHIKeyboard, IOHIKeyboard)
 #pragma mark -
 
 
-bool WMIHIKeyboard::init(OSDictionary *dictionary)
+bool FnKeysHIKeyboard::init(OSDictionary *dictionary)
 {
 	return super::init(dictionary);
 }
 
 
-bool WMIHIKeyboard::start(IOService *provider)
+bool FnKeysHIKeyboard::start(IOService *provider)
 {
 	if(!provider || !super::start( provider )) 
 	{
@@ -50,20 +49,22 @@ bool WMIHIKeyboard::start(IOService *provider)
 		return false;
 	}
 	
-	Device = (WMIHIKeyboardDevice *) provider;
+	Device = (FnKeysHIKeyboardDevice *) provider;
 	clock_get_system_microtime(&lastEventSecs,&lastEventMicrosecs);
+    
+    setProperty("Product", "Fn Keys Keyboard for Asus");
 
 	return true;
 }
 
 
-void WMIHIKeyboard::stop(IOService *provider)
+void FnKeysHIKeyboard::stop(IOService *provider)
 {
 	super::stop(provider);
 }
 
 
-void WMIHIKeyboard::free(void)
+void FnKeysHIKeyboard::free(void)
 {
 	super::free();
 }
@@ -73,7 +74,7 @@ void WMIHIKeyboard::free(void)
  * Receive hotkey event (only down) and send keyboard down and up event
  * Limits the rate of event send to HID stack, otherwise the system slow down and the sound/sun bezel lags.
  */
-IOReturn WMIHIKeyboard::message( UInt32 type, IOService * provider, void * argument)
+IOReturn FnKeysHIKeyboard::message( UInt32 type, IOService * provider, void * argument)
 {
 	if (type == kIOACPIMessageDeviceNotification)
 	{
@@ -82,16 +83,17 @@ IOReturn WMIHIKeyboard::message( UInt32 type, IOService * provider, void * argum
 		clock_get_system_microtime(&secs,&microsecs);
 		deltaSecs = secs - lastEventSecs;
 		
-		if (deltaSecs < 2)
+		/*if (deltaSecs < 2)
 		{
 			deltaMicrosecs = microsecs + (1000000 * deltaSecs) - lastEventMicrosecs;
 			if (deltaMicrosecs < 125000) // rate limiter to 125 ms
 				return kIOReturnSuccess;
 		}
 		lastEventSecs =		 secs;
-		lastEventMicrosecs = microsecs;
+		lastEventMicrosecs = microsecs;*/
 		
 		{
+        
 			UInt32 code = *((UInt32 *) argument);
 			
 			
@@ -105,6 +107,9 @@ IOReturn WMIHIKeyboard::message( UInt32 type, IOService * provider, void * argum
 			dispatchKeyboardEvent( code,
 								  /*direction*/ false,
 								  /*timeStamp*/ now );
+                                  
+            //IOLog("Dispatched Key: %d %x\n",code,code);
+
 		}
 	}
 	return kIOReturnSuccess;
@@ -120,7 +125,7 @@ IOReturn WMIHIKeyboard::message( UInt32 type, IOService * provider, void * argum
 // This allows us to associate the scancodes we choose with the special
 // keys we are interested in posting later. This gives us auto-repeats for free. Kewl.
 //====================================================================================================
-const unsigned char * WMIHIKeyboard::defaultKeymapOfLength( UInt32 * length )
+const unsigned char * FnKeysHIKeyboard::defaultKeymapOfLength( UInt32 * length )
 {
     static const unsigned char ConsumerKeyMap[] =
     {

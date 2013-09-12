@@ -1,10 +1,9 @@
 /*
- *  Copyright (c) 2012 Hotkoffy and EMlyDinEsHMG. All rights reserved.
+ *  Copyright (c) 2012 - 2013 EMlyDinEsH(OSXLatitude). All rights reserved.
  *
- *  IOWMIController Driver ported from Linux by Hotkoffy and modified to Asus by EMlyDinEsHMG
  *
- *  WMIHIKeyboardDevice.cpp
- *  IOWMIFamily
+ *  FnKeysHIKeyboardDevice.cpp
+ *  
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -22,8 +21,8 @@
  */
 
 
-#include "WMIHIKeyboardDevice.h"
-#include "AsusNBWMI.h"
+#include "FnKeysHIKeyboardDevice.h"
+#include "AsusNBFnKeys.h"
 
 #define DEBUG_START 0
 
@@ -34,40 +33,40 @@
 #endif
 
 #define super IOService
-OSDefineMetaClassAndStructors(WMIHIKeyboardDevice, IOService);
+OSDefineMetaClassAndStructors(FnKeysHIKeyboardDevice, IOService);
 
 
-bool WMIHIKeyboardDevice::attach( IOService * provider )
+bool FnKeysHIKeyboardDevice::attach( IOService * provider )
 {
 	if( !super::attach(provider) )  return false;
 	
-	wmi = OSDynamicCast(AsusNBWMI ,provider);
-	if (NULL == wmi)
+	FnKeys = OSDynamicCast(AsusNBFnKeys ,provider);
+	if (NULL == FnKeys)
 		return false;
 	
-	wmi->retain();
+	FnKeys->retain();
 	
 	return true;
 }
 
 
-void WMIHIKeyboardDevice::detach( IOService * provider )
+void FnKeysHIKeyboardDevice::detach( IOService * provider )
 {
-	wmi->release();
-	wmi = 0;
+	FnKeys->release();
+	FnKeys = 0;
 	
 	super::detach(provider);
 }
 
 
 
-void WMIHIKeyboardDevice::keyPressed(int code)
+void FnKeysHIKeyboardDevice::keyPressed(int code)
 {
 	int i = 0, out;
 	do
         
 	{
-
+        
 		if (keyMap[i].description == NULL && keyMap[i].in == 0 && keyMap[i].out == 0xFF)
 		{
 			DEBUG_LOG("%s: Unknown key %02X i=%d\n",this->getName(), code, i);
@@ -86,7 +85,7 @@ void WMIHIKeyboardDevice::keyPressed(int code)
 }
 
 
-void WMIHIKeyboardDevice::setKeyMap(const wmiKeyMap *_keyMap)
+void FnKeysHIKeyboardDevice::setKeyMap(const FnKeysKeyMap *_keyMap)
 {
 	int i = 0;
 	keyMap = _keyMap;

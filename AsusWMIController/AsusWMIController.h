@@ -1,10 +1,9 @@
 /*
- *  Copyright (c) 2012 Hotkoffy and EMlyDinEsHMG. All rights reserved.
+ *  Copyright (c) 2012 - 2013 EMlyDinEsH(OSXLatitude). All rights reserved.
  *
- *  IOWMIController Driver ported from Linux by Hotkoffy and modified to Asus by EMlyDinEsHMG
  *
  *  AsusWMIController.h
- *  IOWMIFamily
+ *  Asus ATK Device Controller
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -26,10 +25,17 @@
 
 #include <IOKit/IOService.h>
 
-#include "AsusNBWMI.h"
-#include  "WMIHIKeyboardDevice.h"
+#include "AsusNBFnKeys.h"
+#include  "FnKeysHIKeyboardDevice.h"
 
-class AsusWMIController : public AsusNBWMI
+const UInt8 NOTIFY_BRIGHTNESS_UP_MIN = 0x10;
+const UInt8 NOTIFY_BRIGHTNESS_UP_MAX = 0x1F;
+
+const UInt8 NOTIFY_BRIGHTNESS_DOWN_MIN = 0x20;
+const UInt8 NOTIFY_BRIGHTNESS_DOWN_MAX = 0x2F;
+
+
+class AsusWMIController : public AsusNBFnKeys
 {
 	
 	OSDeclareDefaultStructors(AsusWMIController)
@@ -42,12 +48,25 @@ public:
 	virtual IOService * probe(IOService *provider, SInt32 *score );
 	
 protected:
+    
+    UInt32 keybrdBLightLvl, curKeybrdBlvl, panelBrighntessLevel, appleBezelValue;
+    bool   tochpadEnabled;
+    bool   alsMode, hasALSensor, isALSenabled, alsAtBoot;
+    bool   asusBackLightMode, hasAsusBackLightDriver;
+    bool   isPanelBackLightOn;
+    bool   hasMediaButtons, hasKeybrdBLight;
+    int loopCount, kLoopCount;
+    OSObject * params[1];
+    UInt32 res;
+    
 	virtual void enableEvent();
 	virtual void disableEvent();
 	virtual void handleMessage(int code);
-	//virtual void trackPadEvent();
+    virtual UInt32 processALS();
+	virtual void keyboardBackLightEvent(UInt32 level);
+    virtual void ReadPanelBrightnessValue();
     
-	static const wmiKeyMap keyMap[];
+	static const FnKeysKeyMap keyMap[];
 	
 };
 

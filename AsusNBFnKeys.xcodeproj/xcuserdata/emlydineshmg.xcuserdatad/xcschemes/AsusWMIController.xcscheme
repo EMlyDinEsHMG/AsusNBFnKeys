@@ -17,7 +17,7 @@
                BlueprintIdentifier = "27F96E1716333E14003A6255"
                BuildableName = "AsusWMIController.kext"
                BlueprintName = "AsusWMIController"
-               ReferencedContainer = "container:AsusNBWMI.xcodeproj">
+               ReferencedContainer = "container:AsusNBFnKeys.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

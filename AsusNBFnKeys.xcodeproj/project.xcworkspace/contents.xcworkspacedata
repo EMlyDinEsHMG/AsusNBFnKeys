@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:AsusNBWMI.xcodeproj">
+      location = "self:AsusNBFnKeys.xcodeproj">
    </FileRef>
 </Workspace>
