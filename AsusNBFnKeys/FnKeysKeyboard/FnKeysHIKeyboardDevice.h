@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2012 - 2013 EMlyDinEsH(OSXLatitude). All rights reserved.
+ *  Copyright (c) EMlyDinEsH (mg-dinesh@live.com) 2012-2018. All rights reserved.
  *
  *
  *  FnKeysHIKeyboardDevice.h
@@ -25,15 +25,6 @@
 
 #include <IOKit/IOService.h>
 
-
-typedef struct  {
-	UInt16 in;
-	UInt8 out;
-	const char *description;
-} FnKeysKeyMap;
-
-
-
 class AsusNBFnKeys;
 
 class FnKeysHIKeyboardDevice : public IOService
@@ -41,19 +32,13 @@ class FnKeysHIKeyboardDevice : public IOService
 	OSDeclareDefaultStructors(FnKeysHIKeyboardDevice);
 	
 private:
-	AsusNBFnKeys *FnKeys;
+	AsusNBFnKeys * _FnKeys;
 	
 public:
 	virtual bool attach(IOService * provider);
 	virtual void detach(IOService * provider);
 	
-	void keyPressed(int code); 
-	
-	//IOReturn message( UInt32 type, IOService * provider, void * argument);
-
-	const FnKeysKeyMap * keyMap;
-	void setKeyMap(const FnKeysKeyMap * _keyMap);
-	
+	void keyPressed(int code);
 };
 
 #endif

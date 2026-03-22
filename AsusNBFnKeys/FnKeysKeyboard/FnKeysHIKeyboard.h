@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2012 - 2013 EMlyDinEsH(OSXLatitude). All rights reserved.
+ *  Copyright (c) EMlyDinEsH (mg-dinesh@live.com) 2012-2018. All rights reserved.
  *
  *
  *  FnKeysHIDKeyboard.h
@@ -24,6 +24,8 @@
 #define _FnKeysHIDKeyboard_h
 
 #include <IOKit/hidsystem/IOHIKeyboard.h>
+#include <IOKit/acpi/IOACPIPlatformDevice.h>
+#include <IOKit/hidsystem/ev_keymap.h>
 
 class FnKeysHIKeyboardDevice;
 
@@ -32,12 +34,12 @@ class FnKeysHIKeyboard : public IOHIKeyboard
 	OSDeclareDefaultStructors(FnKeysHIKeyboard)
 	
 private:
-	FnKeysHIKeyboardDevice *Device;
+	FnKeysHIKeyboardDevice * _kDevice;
 	clock_sec_t  lastEventSecs;
 	clock_usec_t lastEventMicrosecs;
-	
+    
 public:
-	// standard IOKit methods
+	// Standard IOKit methods
 	virtual bool       init(OSDictionary *dictionary = 0);
 	virtual bool       start(IOService *provider);
 	virtual void       stop(IOService *provider);
@@ -45,8 +47,9 @@ public:
 	
 	IOReturn message( UInt32 type, IOService * provider, void * argument);
 	
-	// IOHIKeyboard specific methods
+	// IOHIKeyboard specific method
 	virtual const unsigned char * defaultKeymapOfLength(UInt32 * length);
+    
 };
 
 #endif
