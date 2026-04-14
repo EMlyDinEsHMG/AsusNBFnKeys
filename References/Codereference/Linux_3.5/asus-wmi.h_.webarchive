@@ -1,0 +1,674 @@
+bplist00“_WebMainResource_WebSubresources’	
+_WebResourceData_WebResourceMIMEType_WebResourceTextEncodingName_WebResourceFrameName^WebResourceURLO5¢<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+<title>Linux/drivers/platform/x86/asus-wmi.h - Linux Cross Reference - Free Electrons</title>
+<link rel="stylesheet" href="/style.css" type="text/css" media="screen">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta description="Linux Cross-Reference (LXR) service by Free Electrons. The easiest way to study Linux kernel sources. Available for all recent releases.">
+<base href="http://lxr.free-electrons.com/">
+</head>
+
+<body>
+
+<div id="wrapper">
+<div id="wrapper2">
+<div id="header">
+
+	<div id="logo">
+		<h1>Linux Cross Reference</h1>
+		<h2><a href="http://free-electrons.com">Free Electrons</a></h2>
+		<h2>Embedded Linux Experts</h2>
+		<p>
+		 &nbsp;‚Ä¢&nbsp;<b><i>source navigation</i></b> &nbsp;‚Ä¢&nbsp;<a href="diff/drivers/platform/x86/asus-wmi.h">diff markup</a> &nbsp;‚Ä¢&nbsp;<a href="ident">identifier search</a> &nbsp;‚Ä¢&nbsp;<a href="search">freetext search</a> &nbsp;‚Ä¢&nbsp;
+		</p>
+	</div>
+</div>
+
+<div id="topbar">
+  
+  <p>Version: &nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?v=2.6.30">2.6.30</a>&nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?v=2.6.31">2.6.31</a>&nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?v=2.6.32">2.6.32</a>&nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?v=2.6.33">2.6.33</a>&nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?v=2.6.34">2.6.34</a>&nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?v=2.6.35">2.6.35</a>&nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?v=2.6.36">2.6.36</a>&nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?v=2.6.37">2.6.37</a>&nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?v=2.6.38">2.6.38</a>&nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?v=2.6.39">2.6.39</a>&nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?v=3.0">3.0</a>&nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?v=3.1">3.1</a>&nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?v=3.2">3.2</a>&nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?v=3.3">3.3</a>&nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?v=3.4">3.4</a>&nbsp;<b><i>3.5</i></b></p>
+  
+  <p>Architecture: &nbsp;<b><i>x86</i></b>&nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?a=arm">arm</a>&nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?a=avr32">avr32</a>&nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?a=blackfin">blackfin</a>&nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?a=m68k">m68k</a>&nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?a=m68knommu">m68knommu</a>&nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?a=microblaze">microblaze</a>&nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?a=mips">mips</a>&nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?a=powerpc">powerpc</a>&nbsp;<a href="source/drivers/platform/x86/asus-wmi.h?a=sh">sh</a></p>
+  
+</div>
+
+<h1><a href="source/">Linux</a>/<a href="source/drivers/">drivers</a>/<a href="source/drivers/platform/">platform</a>/<a href="source/drivers/platform/x86/">x86</a>/<a href="source/drivers/platform/x86/asus-wmi.h">asus-wmi.h</a></h1>
+<div id="lxrcode"><pre>  <a name="L1" href="source/drivers/platform/x86/asus-wmi.h#L1">1</a> <b><i>/*</i></b>
+  <a name="L2" href="source/drivers/platform/x86/asus-wmi.h#L2">2</a> <b><i> * Asus PC WMI hotkey driver</i></b>
+  <a name="L3" href="source/drivers/platform/x86/asus-wmi.h#L3">3</a> <b><i> *</i></b>
+  <a name="L4" href="source/drivers/platform/x86/asus-wmi.h#L4">4</a> <b><i> * Copyright(C) 2010 Intel Corporation.</i></b>
+  <a name="L5" href="source/drivers/platform/x86/asus-wmi.h#L5">5</a> <b><i> * Copyright(C) 2010-2011 Corentin Chary &lt;corentin.chary@gmail.com&gt;</i></b>
+  <a name="L6" href="source/drivers/platform/x86/asus-wmi.h#L6">6</a> <b><i> *</i></b>
+  <a name="L7" href="source/drivers/platform/x86/asus-wmi.h#L7">7</a> <b><i> * Portions based on wistron_btns.c:</i></b>
+  <a name="L8" href="source/drivers/platform/x86/asus-wmi.h#L8">8</a> <b><i> * Copyright (C) 2005 Miloslav Trmac &lt;mitr@volny.cz&gt;</i></b>
+  <a name="L9" href="source/drivers/platform/x86/asus-wmi.h#L9">9</a> <b><i> * Copyright (C) 2005 Bernhard Rosenkraenzer &lt;bero@arklinux.org&gt;</i></b>
+ <a name="L10" href="source/drivers/platform/x86/asus-wmi.h#L10">10</a> <b><i> * Copyright (C) 2005 Dmitry Torokhov &lt;dtor@mail.ru&gt;</i></b>
+ <a name="L11" href="source/drivers/platform/x86/asus-wmi.h#L11">11</a> <b><i> *</i></b>
+ <a name="L12" href="source/drivers/platform/x86/asus-wmi.h#L12">12</a> <b><i> *  This program is free software; you can redistribute it and/or modify</i></b>
+ <a name="L13" href="source/drivers/platform/x86/asus-wmi.h#L13">13</a> <b><i> *  it under the terms of the GNU General Public License as published by</i></b>
+ <a name="L14" href="source/drivers/platform/x86/asus-wmi.h#L14">14</a> <b><i> *  the Free Software Foundation; either version 2 of the License, or</i></b>
+ <a name="L15" href="source/drivers/platform/x86/asus-wmi.h#L15">15</a> <b><i> *  (at your option) any later version.</i></b>
+ <a name="L16" href="source/drivers/platform/x86/asus-wmi.h#L16">16</a> <b><i> *</i></b>
+ <a name="L17" href="source/drivers/platform/x86/asus-wmi.h#L17">17</a> <b><i> *  This program is distributed in the hope that it will be useful,</i></b>
+ <a name="L18" href="source/drivers/platform/x86/asus-wmi.h#L18">18</a> <b><i> *  but WITHOUT ANY WARRANTY; without even the implied warranty of</i></b>
+ <a name="L19" href="source/drivers/platform/x86/asus-wmi.h#L19">19</a> <b><i> *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</i></b>
+ <a name="L20" href="source/drivers/platform/x86/asus-wmi.h#L20">20</a> <b><i> *  GNU General Public License for more details.</i></b>
+ <a name="L21" href="source/drivers/platform/x86/asus-wmi.h#L21">21</a> <b><i> *</i></b>
+ <a name="L22" href="source/drivers/platform/x86/asus-wmi.h#L22">22</a> <b><i> *  You should have received a copy of the GNU General Public License</i></b>
+ <a name="L23" href="source/drivers/platform/x86/asus-wmi.h#L23">23</a> <b><i> *  along with this program; if not, write to the Free Software</i></b>
+ <a name="L24" href="source/drivers/platform/x86/asus-wmi.h#L24">24</a> <b><i> *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA</i></b>
+ <a name="L25" href="source/drivers/platform/x86/asus-wmi.h#L25">25</a> <b><i> */</i></b>
+ <a name="L26" href="source/drivers/platform/x86/asus-wmi.h#L26">26</a> 
+ <a name="L27" href="source/drivers/platform/x86/asus-wmi.h#L27">27</a> #ifndef <a href="ident?i=_ASUS_WMI_H_">_ASUS_WMI_H_</a>
+ <a name="L28" href="source/drivers/platform/x86/asus-wmi.h#L28">28</a> #define <a href="ident?i=_ASUS_WMI_H_">_ASUS_WMI_H_</a>
+ <a name="L29" href="source/drivers/platform/x86/asus-wmi.h#L29">29</a> 
+ <a name="L30" href="source/drivers/platform/x86/asus-wmi.h#L30">30</a> #include &lt;linux/platform_device.h&gt;
+ <a name="L31" href="source/drivers/platform/x86/asus-wmi.h#L31">31</a> 
+ <a name="L32" href="source/drivers/platform/x86/asus-wmi.h#L32">32</a> #define <a href="ident?i=ASUS_WMI_KEY_IGNORE">ASUS_WMI_KEY_IGNORE</a> (-1)
+ <a name="L33" href="source/drivers/platform/x86/asus-wmi.h#L33">33</a> 
+ <a name="L34" href="source/drivers/platform/x86/asus-wmi.h#L34">34</a> struct <a href="ident?i=module">module</a>;
+ <a name="L35" href="source/drivers/platform/x86/asus-wmi.h#L35">35</a> struct <a href="ident?i=key_entry">key_entry</a>;
+ <a name="L36" href="source/drivers/platform/x86/asus-wmi.h#L36">36</a> struct <a href="ident?i=asus_wmi">asus_wmi</a>;
+ <a name="L37" href="source/drivers/platform/x86/asus-wmi.h#L37">37</a> 
+ <a name="L38" href="source/drivers/platform/x86/asus-wmi.h#L38">38</a> struct <a href="ident?i=quirk_entry">quirk_entry</a> {
+ <a name="L39" href="source/drivers/platform/x86/asus-wmi.h#L39">39</a>         <a href="ident?i=bool">bool</a> <a href="ident?i=hotplug_wireless">hotplug_wireless</a>;
+ <a name="L40" href="source/drivers/platform/x86/asus-wmi.h#L40">40</a>         <a href="ident?i=bool">bool</a> scalar_panel_brightness;
+ <a name="L41" href="source/drivers/platform/x86/asus-wmi.h#L41">41</a>         <a href="ident?i=bool">bool</a> store_backlight_power;
+ <a name="L42" href="source/drivers/platform/x86/asus-wmi.h#L42">42</a>         int <a href="ident?i=wapf">wapf</a>;
+ <a name="L43" href="source/drivers/platform/x86/asus-wmi.h#L43">43</a> };
+ <a name="L44" href="source/drivers/platform/x86/asus-wmi.h#L44">44</a> 
+ <a name="L45" href="source/drivers/platform/x86/asus-wmi.h#L45">45</a> struct <a href="ident?i=asus_wmi_driver">asus_wmi_driver</a> {
+ <a name="L46" href="source/drivers/platform/x86/asus-wmi.h#L46">46</a>         int                     <a href="ident?i=brightness">brightness</a>;
+ <a name="L47" href="source/drivers/platform/x86/asus-wmi.h#L47">47</a>         int                     panel_power;
+ <a name="L48" href="source/drivers/platform/x86/asus-wmi.h#L48">48</a> 
+ <a name="L49" href="source/drivers/platform/x86/asus-wmi.h#L49">49</a>         const char              *<a href="ident?i=name">name</a>;
+ <a name="L50" href="source/drivers/platform/x86/asus-wmi.h#L50">50</a>         struct <a href="ident?i=module">module</a>           *owner;
+ <a name="L51" href="source/drivers/platform/x86/asus-wmi.h#L51">51</a> 
+ <a name="L52" href="source/drivers/platform/x86/asus-wmi.h#L52">52</a>         const char              *event_guid;
+ <a name="L53" href="source/drivers/platform/x86/asus-wmi.h#L53">53</a> 
+ <a name="L54" href="source/drivers/platform/x86/asus-wmi.h#L54">54</a>         const struct <a href="ident?i=key_entry">key_entry</a>  *<a href="ident?i=keymap">keymap</a>;
+ <a name="L55" href="source/drivers/platform/x86/asus-wmi.h#L55">55</a>         const char              *<a href="ident?i=input_name">input_name</a>;
+ <a name="L56" href="source/drivers/platform/x86/asus-wmi.h#L56">56</a>         const char              *input_phys;
+ <a name="L57" href="source/drivers/platform/x86/asus-wmi.h#L57">57</a>         struct <a href="ident?i=quirk_entry">quirk_entry</a>      *<a href="ident?i=quirks">quirks</a>;
+ <a name="L58" href="source/drivers/platform/x86/asus-wmi.h#L58">58</a>         <b><i>/* Returns new code, value, and autorelease values in arguments.</i></b>
+ <a name="L59" href="source/drivers/platform/x86/asus-wmi.h#L59">59</a> <b><i>         * Return ASUS_WMI_KEY_IGNORE in code if event should be ignored. */</i></b>
+ <a name="L60" href="source/drivers/platform/x86/asus-wmi.h#L60">60</a>         void (*key_filter) (struct <a href="ident?i=asus_wmi_driver">asus_wmi_driver</a> *<a href="ident?i=driver">driver</a>, int *<a href="ident?i=code">code</a>,
+ <a name="L61" href="source/drivers/platform/x86/asus-wmi.h#L61">61</a>                             unsigned int *<a href="ident?i=value">value</a>, <a href="ident?i=bool">bool</a> *autorelease);
+ <a name="L62" href="source/drivers/platform/x86/asus-wmi.h#L62">62</a> 
+ <a name="L63" href="source/drivers/platform/x86/asus-wmi.h#L63">63</a>         int (*<a href="ident?i=probe">probe</a>) (struct <a href="ident?i=platform_device">platform_device</a> *<a href="ident?i=device">device</a>);
+ <a name="L64" href="source/drivers/platform/x86/asus-wmi.h#L64">64</a>         void (*detect_quirks) (struct <a href="ident?i=asus_wmi_driver">asus_wmi_driver</a> *<a href="ident?i=driver">driver</a>);
+ <a name="L65" href="source/drivers/platform/x86/asus-wmi.h#L65">65</a> 
+ <a name="L66" href="source/drivers/platform/x86/asus-wmi.h#L66">66</a>         struct <a href="ident?i=platform_driver">platform_driver</a>  <a href="ident?i=platform_driver">platform_driver</a>;
+ <a name="L67" href="source/drivers/platform/x86/asus-wmi.h#L67">67</a>         struct <a href="ident?i=platform_device">platform_device</a> *<a href="ident?i=platform_device">platform_device</a>;
+ <a name="L68" href="source/drivers/platform/x86/asus-wmi.h#L68">68</a> };
+ <a name="L69" href="source/drivers/platform/x86/asus-wmi.h#L69">69</a> 
+ <a name="L70" href="source/drivers/platform/x86/asus-wmi.h#L70">70</a> int <a href="ident?i=asus_wmi_register_driver">asus_wmi_register_driver</a>(struct <a href="ident?i=asus_wmi_driver">asus_wmi_driver</a> *<a href="ident?i=driver">driver</a>);
+ <a name="L71" href="source/drivers/platform/x86/asus-wmi.h#L71">71</a> void <a href="ident?i=asus_wmi_unregister_driver">asus_wmi_unregister_driver</a>(struct <a href="ident?i=asus_wmi_driver">asus_wmi_driver</a> *<a href="ident?i=driver">driver</a>);
+ <a name="L72" href="source/drivers/platform/x86/asus-wmi.h#L72">72</a> 
+ <a name="L73" href="source/drivers/platform/x86/asus-wmi.h#L73">73</a> #endif <b><i>/* !_ASUS_WMI_H_ */</i></b>
+ <a name="L74" href="source/drivers/platform/x86/asus-wmi.h#L74">74</a> </pre></div><p>
+This page was automatically generated by <a href="http://lxr.linux.no">LXR</a> 0.3.1.
+&nbsp;‚Ä¢&nbsp;
+Linux is a registered trademark of Linus Torvalds
+</p>
+
+<div id="menu">
+<ul>
+   <li><a href="http://free-electrons.com/">Home</a></li>
+   <li><a href="http://free-electrons.com/development/" title="Development">Development</a></li>
+   <li><a href="http://free-electrons.com/services/" title="Services">Services</a></li>
+   <li><a href="http://free-electrons.com/training/" title="Training">Training</a></li>
+   <li><a href="http://free-electrons.com/docs/" title="Docs">Docs</a></li>
+   <li><a href="http://free-electrons.com/community/" title="Community">Community</a></li>
+   <li><a href="http://free-electrons.com/company/" title="Company">Company</a></li>
+   <li><a href="http://free-electrons.com/blog/" title="Blog">Blog</a></li>
+</ul>
+</div>
+
+</div>
+</div>
+
+
+</body></html>Ytext/htmlUUTF-8P_Dhttp://lxr.free-electrons.com/source/drivers/platform/x86/asus-wmi.h°‘_WebResourceResponseO∫/*
+Theme Name: FE1
+Theme URI: http://www.freewpthemes.net/preview/longbeach
+Description: Tested on WordPress 2.9.1
+Version: 2.0
+Author: Free WordPress Themes
+Author URI: http://www.freewpthemes.net/
+Tags: dark, fixed width, two columns, widgets
+*/
+
+body {
+	margin: 20px;
+	background: black;
+	font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif;
+	font-size: 0.9em;
+	color: #787878;
+}
+
+h1, h2, h3 {
+	font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+	font-weight: bold;
+	color: black;
+/* Commented out because of a bug in IE 7, still in wide use
+	background-color: white;
+*/
+}
+
+h1 {
+	font-size: 1.3em;
+}
+
+h2 {
+	font-size: 1.2em;
+	border-bottom: 1px solid #565F68;
+}
+
+h3 {
+	font-size: 1.1em;
+}
+
+ul, ol, dt, dl {
+	margin-top: 0.5em;
+}
+
+li, dd {
+	margin-top: 0.35em;
+}
+
+
+a {
+	text-decoration: none;
+	border-bottom: 1px dotted #999999;
+	color: #0A0A0A;
+}
+
+code {
+    font-family: Monaco, "Courier New", Courier, monospace;
+    font-size: 1em;
+    color: black;
+    background-color: inherit;
+    padding: 0 0.1em;
+}
+
+pre {
+    font-family: Monaco, "Courier New", Courier, monospace;
+    font-size: 1em;
+    padding: 1em;
+    color: White;
+    background-color: #a9afd1;
+    overflow: auto;
+}
+
+a:hover {
+	background: none;
+}
+
+#wrapper {
+	width: 940px;
+	margin: 0 auto;
+	padding: 20px;
+	background: white;
+}
+
+/* Header */
+
+#header {
+	width: 940px;
+	height: 158px;
+	margin: 0 auto;
+	background: white url(images/img01.jpg) no-repeat left top;
+}
+
+/* Language */
+
+#language {
+	float: left;
+	width: auto;
+	margin: 47px 0 0 10px;
+}
+
+#language a {
+	border-style: none;
+}
+
+#language img {
+	border-style: none;
+}
+
+/* Logo */
+
+#logo h1 {
+	text-align: right;
+        margin: 0;
+        padding: 10px 20px 0 5px;
+        letter-spacing: -1px;
+        text-transform: capitalize;
+        font-size: 2.6em;
+	color: white;
+	background-color: inherit;
+	border: none;
+}
+
+#logo h2 {
+        text-align: right;
+        margin: 0;
+        padding: 10px 20px 0 5px;
+        text-transform: capitalize;
+        font: bold 1.2em Arial, Helvetica, sans-serif;
+	color: white;
+	background-color: inherit;
+	border: none;
+}
+
+#logo p {
+        text-align: right;
+        margin: 0;
+        padding: 10px 20px 0 5px;
+        text-transform: capitalize;
+        font: bold 1.0em Arial, Helvetica, sans-serif;
+	color: white;
+	background-color: inherit;
+}
+
+#logo a {
+	border: none;
+	background: none;
+	text-decoration: none;
+	color: white;
+	background-color: inherit;
+	border: none;
+}
+
+/* Search */
+
+#search {
+	float: right;
+	width: auto;
+}
+
+#search form {
+        height: 30px;
+        margin: 0;
+        padding: 20px 20px 0 0;
+}
+
+#search fieldset {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+#search-text {
+	width: 200px;
+	border: none;
+	text-transform: lowercase;
+	font: bold 1.2em Arial, Helvetica, sans-serif;
+	color: black;
+	background-color: white;
+}
+
+#search-submit {
+	display: none;
+}
+
+/* Menu */
+
+#menu {
+	width: 940px;
+	height: 2em;
+	margin: 0 auto;
+	padding: 0;
+	border-top: 1px white solid;
+	color: white;
+	background: #565F68;
+}
+
+#menu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	line-height: normal;
+}
+
+#menu li {
+	float: left;
+	width: auto;
+}
+
+#menu a {
+	display: block;
+	padding: 0.2em 0.8em 0.5em 1em;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0.9em;
+	font-weight: bold;
+	color: white;
+	background-color: inherit;
+	border: none;
+}
+
+#menu a:hover, #menu .current_page_item a {
+	color: white;
+	background-color: inherit
+}
+
+#menu a:hover {
+	text-decoration: underline;
+}
+
+/* Topbar: like the memu bar, but with different text positioning */
+/* Used for LXR! */
+
+#topbar {
+        width: 940px;
+        height: 3em;
+        border-top: 1px white solid;
+        margin-bottom: 1em;
+        background: #565F68;
+        color: white;
+        font-weight: bold;
+        font-size: 0.95em;
+}
+
+#topbar p {
+        padding: 0.3em 0 0 0.3em;
+        height: 0.95em;
+        margin: 0;
+}
+
+#topbar a {
+        color: #D3D3D3;    /* LightGrey */
+        border: none;
+}
+
+/* Page */
+
+#page {
+	width: 940px;
+	margin: 0 auto;
+}
+
+#page img {
+	border: none;
+}
+
+
+/* Content */
+
+#content {
+	float: right;
+	width: 680px;
+	padding: 10px 10px 0 0;
+}
+
+.post {
+}
+
+.post .title {
+	color: black;
+	background-color: inherit;
+}
+
+.post .title a {
+	background: none;
+	color: black;
+	border: none;
+	background-color: inherit;
+}
+
+.post .title a:hover {
+	text-decoration: underline;
+}
+
+.post .meta {
+/*	text-transform: uppercase; */
+	text-align: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0.7em;
+}
+
+.post .entry {
+	padding: 0 0 1em 0;
+	text-align: justify;
+}
+
+/* Sidebar */
+
+#sidebar {
+	float: left;
+	width: 200px;
+	padding: 10px 0 0 10px;
+	color: #787878;
+}
+
+#sidebar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#sidebar li ul {
+	padding-bottom: 2em;
+}
+
+#sidebar li li {
+	line-height: 1.5em;
+	padding-bottom: 0.5em;
+	border-bottom: 1px dashed #D2D4C9;
+}
+
+#sidebar h2 {
+	letter-spacing: -.5px;
+	color: black;
+	background-color: inherit;
+}
+
+#sidebar p {
+	padding-bottom: 20px;
+	text-align: justify;
+}
+
+#sidebar a {
+	color: #787878;
+	border: none;
+}
+
+#sidebar a:hover {
+	text-decoration: underline;
+	color: #787878;
+}
+
+/* Footer */
+
+#footer {
+	width: 940px;
+	margin: 0 auto;
+	padding: 20px 0 15px 0;
+	background: #565F68;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #B2B2B2;
+}
+
+#footer p {
+	margin: 0;
+	line-height: normal;
+	font-size: 0.6em;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+#footer a {
+	color: white;
+	background-color: inherit;
+}
+
+.alignright {
+	float: right;
+	width: auto;
+}
+
+.alignleft {
+	float: left;
+	width: auto;
+}
+
+#respond {
+	margin: 0;
+	padding-top: 2em;
+}
+
+.navigation {
+}
+
+.pagetitle {
+	padding-bottom: 0;
+}
+
+hr {
+	display: none;
+}
+
+p.question { 
+	margin: 0;
+	font-weight: bold;
+	color: #5d6cb4;
+}
+
+p.summary {
+	font-size: 1em;
+	font-weight: bold;
+	color: #5d6cb4;
+}
+
+img.right {
+	float: right;
+	width: auto;
+ 	margin: 2em 0 1.4em 2em;
+}
+
+img.right-top {
+	float: right;
+	width: auto;
+ 	margin: 0em 0 1.4em 2em;
+}
+
+img.left {
+	float: left;
+	width: auto;
+ 	margin: 2em 2em 1.4em 0;
+}
+
+table.listing  {
+    border-collapse: collapse;
+    border-style: none;
+    border-spacing: 0;
+}
+
+table.listing th {
+    color: white;
+    background: #6d7dd1;
+    font-weight: normal;
+    padding: 0.25em 0.25em;
+    text-align: center;
+    border-width: thin;
+    border-color: black;
+    border-style: solid;
+}
+
+table.listing td {
+    text-align: left;
+    padding: 0.25em 0.25em;
+    border-width: thin;
+    border-color: black;
+    border-style: solid;
+}
+
+.listing-even {
+    color: white;
+    background-color: #6d7dd1;
+}
+
+.listing-odd {
+    background-color: transparent;
+}
+
+.listing .listing-even a {
+    color: white;
+    background-color: #6d7dd1;
+}
+
+
+/* LXR code */
+
+#lxrcode {
+	background-color: white;
+	font-weight: bold;
+}
+
+#lxrcode pre {
+	font-family: Monaco, "Courier New", Courier, monospace;
+	font-size: 0.95em;
+	padding: 1em;
+	color: #787878;
+	overflow: auto;
+	background-color: white;
+}
+
+#lxrcode a {
+	color: black;
+	background-color: white;
+}
+
+/* Added to support threaded comments */
+
+#comments {
+	margin-top: 3em;
+}
+
+.commentlist li, #commentform input, #commentform textarea {
+        font: 0.9em 'Lucida Grande', Verdana, Arial, Sans-Serif;
+        }
+
+.commentlist li ul li {
+        font-size: 0.95em;
+}
+
+.commentlist li {
+        list-style-type: none;
+	margin: 0em 1em 1em -3em;
+	padding: 1em;
+}
+
+
+.commentlist cite, .commentlist cite a {
+        font-style: normal;
+        font-size: 1.05em;
+        }
+
+.commentlist p {
+	padding-top: 1em;
+        font-weight: normal;
+        line-height: 1.5em;
+        text-transform: none;
+}
+
+.thread-alt {
+        background-color: #f8f8f8;
+}
+
+.thread-even {
+        background-color: white;
+}
+
+.depth-1 {
+	border: 1px solid #ddd;
+}
+
+.depth-2, .depth-3, .depth-4, .depth-5 {
+	border-left: 1px solid #ddd;
+}
+Xtext/css_'http://lxr.free-electrons.com/style.cssORbplist00‘jkX$versionX$objectsY$archiverT$top Ü†Ø "()012LMNOPQRSTUVWXYZ[\]^_`deU$null›	
+ !R$6S$10R$2R$7R$3S$11R$8V$classR$4R$9R$0R$5R$1ÄÄÄ ÄÄÄÄ Ä”#$&'WNS.base[NS.relativeÄ ÄÄ_'http://lxr.free-electrons.com/style.css“*+,-Z$classnameX$classesUNSURL¢./UNSURLXNSObject#AµÎÿIÒ»”345@KWNS.keysZNS.objects™6789:;<=>?Ä	Ä
+ÄÄÄÄÄÄÄÄ™ABCDEFGHIJÄÄÄÄÄÄÄÄÄÄÄVServer\Content-TypeZConnection]Last-ModifiedSVia]Accept-RangesTDate^Content-LengthZKeep-AliveTEtagVApacheXtext/cssZKeep-Alive_Fri, 27 May 2011 08:45:45 GMT_1.1 lxr.free-electrons.comUbytes_Mon, 27 Aug 2012 02:41:26 GMTT7866_timeout=15, max=10000_"e4d2-1eba-4a43df6a7e040"“*+ab_NSMutableDictionary£ac/\NSDictionary∫“*+fg_NSHTTPURLResponse£hi/_NSHTTPURLResponse]NSURLResponse_NSKeyedArchiver—lm_WebResourceResponseÄ    # - 2 7 Z ` { ~ Ç Ö à ã è í ô ú ü ¢ • ® ™ ¨ Æ ∞ ≤ ¥ ∂ ∏ ∫ º æ ¿ « œ € › ﬂ ·$*-3<EGNValnprtvxz|~Äãçèëìïóôõùü°®µ¿Œ“‡ÂÙˇ?\bÇáüª¿÷⁄ÁÍÔ);>T             n              V    1 < N d Ç ô ®6N6X6^6_6¶6®6±6«UÖUéU∏                           Z

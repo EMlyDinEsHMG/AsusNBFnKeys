@@ -1,0 +1,24 @@
+EVENT ID     FUNCTION
+45	play
+43	stop
+41	next
+40	previous
+8A	c
+82	v
+5c	space
+55	Numlock Enter
+30	f12
+31	F11
+32	F10
+6B	f9
+61	f8
+34	f7
+15	f6
+24	f5
+51	f4
+50	f3
+88	f2
+	f1
+
+BRT DW: 32-41
+BRT UP: 17-26

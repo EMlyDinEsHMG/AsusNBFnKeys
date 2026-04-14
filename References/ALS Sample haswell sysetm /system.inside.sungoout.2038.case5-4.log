@@ -1,0 +1,300 @@
+ Marqueur - 12 mai 2015 20:38:03
+May 12 20:38:05 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 10, 2's 10, Nofifications 1, Avg 10, Total 10
+May 12 20:38:07 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:38:07 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 49, 2's 49, Nofifications 2, Avg 29, Total 59
+May 12 20:38:08 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:38:08 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 167, 2's 167, Nofifications 3, Avg 75, Total 226
+May 12 20:38:11 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 166, 2's 166, Nofifications 4, Avg 98, Total 392
+May 12 20:38:12 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Idle keyboard backlight off triggered after timeout 10000.
+May 12 20:38:12 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backlight level set to 0xfd Status 0xea.
+May 12 20:38:14 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 164, 2's 164, Nofifications 5, Avg 111, Total 556
+May 12 20:38:17 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 165, 2's 165, Nofifications 6, Avg 120, Total 721
+May 12 20:38:20 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 164, 2's 164, Nofifications 7, Avg 126, Total 885
+May 12 20:38:23 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 165, 2's 165, Nofifications 8, Avg 131, Total 1050
+May 12 20:38:23 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Current KLevel 9, Has16Levels 1
+May 12 20:38:23 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Reading keyboard backlight...
+May 12 20:38:23 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backight Value from DSDT 0xed
+May 12 20:38:23 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: KB Auto not active 0, changeKBlight 1
+May 12 20:38:23 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:38:23 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALI Avg 131, Brightness Level to set 409(0x199) Current Level 512(0x200), Diff 103(0x67), Events 1, Timer 3000, KBlvl 12, Auto off Yes, ALS Brightness control Yes
+May 12 20:38:23 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:38:26 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 164, 2's 164, Nofifications 1, Avg 164, Total 164
+May 12 20:38:29 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:38:29 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 137, 2's 137, Nofifications 2, Avg 150, Total 301
+May 12 20:38:30 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:38:30 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 163, 2's 163, Nofifications 3, Avg 154, Total 464
+May 12 20:38:33 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 164, 2's 164, Nofifications 4, Avg 157, Total 628
+May 12 20:38:36 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 161, 2's 161, Nofifications 5, Avg 157, Total 789
+May 12 20:38:39 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 158, 2's 158, Nofifications 6, Avg 157, Total 947
+May 12 20:38:42 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 161, 2's 161, Nofifications 7, Avg 158, Total 1108
+May 12 20:38:45 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 160, 2's 160, Nofifications 8, Avg 158, Total 1268
+May 12 20:38:45 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Current KLevel 9, Has16Levels 1
+May 12 20:38:45 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Reading keyboard backlight...
+May 12 20:38:45 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backight Value from DSDT 0xed
+May 12 20:38:45 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: KB Auto not active 0, changeKBlight 1
+May 12 20:38:45 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:38:45 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALI Avg 158, Brightness Level to set 409(0x199) Current Level 512(0x200), Diff 103(0x67), Events 1, Timer 3000, KBlvl 12, Auto off Yes, ALS Brightness control Yes
+May 12 20:38:45 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:38:48 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 160, 2's 160, Nofifications 1, Avg 160, Total 160
+May 12 20:38:51 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 158, 2's 158, Nofifications 2, Avg 159, Total 318
+May 12 20:38:54 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 159, 2's 159, Nofifications 3, Avg 159, Total 477
+May 12 20:38:57 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 160, 2's 160, Nofifications 4, Avg 159, Total 637
+May 12 20:39:00 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 158, 2's 158, Nofifications 5, Avg 159, Total 795
+May 12 20:39:03 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 157, 2's 157, Nofifications 6, Avg 158, Total 952
+May 12 20:39:06 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 157, 2's 157, Nofifications 7, Avg 158, Total 1109
+May 12 20:39:09 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 154, 2's 154, Nofifications 8, Avg 157, Total 1263
+May 12 20:39:09 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Current KLevel 9, Has16Levels 1
+May 12 20:39:09 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Reading keyboard backlight...
+May 12 20:39:09 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backight Value from DSDT 0xed
+May 12 20:39:09 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: KB Auto not active 0, changeKBlight 1
+May 12 20:39:09 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:39:09 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALI Avg 157, Brightness Level to set 409(0x199) Current Level 512(0x200), Diff 103(0x67), Events 1, Timer 3000, KBlvl 12, Auto off Yes, ALS Brightness control Yes
+May 12 20:39:09 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:39:12 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 157, 2's 157, Nofifications 1, Avg 157, Total 157
+May 12 20:39:15 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 156, 2's 156, Nofifications 2, Avg 156, Total 313
+May 12 20:39:18 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 155, 2's 155, Nofifications 3, Avg 156, Total 468
+May 12 20:39:21 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:39:21 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 125, 2's 125, Nofifications 4, Avg 148, Total 593
+May 12 20:39:23 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:39:23 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 156, 2's 156, Nofifications 5, Avg 149, Total 749
+May 12 20:39:24 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:39:24 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 146, 2's 146, Nofifications 6, Avg 149, Total 895
+May 12 20:39:26 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:39:26 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 65, 2's 65, Nofifications 7, Avg 137, Total 960
+May 12 20:39:27 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:39:27 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 150, 2's 150, Nofifications 8, Avg 138, Total 1110
+May 12 20:39:27 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Current KLevel 9, Has16Levels 1
+May 12 20:39:27 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Reading keyboard backlight...
+May 12 20:39:27 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backight Value from DSDT 0xed
+May 12 20:39:27 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: KB Auto not active 0, changeKBlight 1
+May 12 20:39:27 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:39:27 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALI Avg 138, Brightness Level to set 409(0x199) Current Level 512(0x200), Diff 103(0x67), Events 1, Timer 3000, KBlvl 12, Auto off Yes, ALS Brightness control Yes
+May 12 20:39:27 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:39:28 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:39:28 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 122, 2's 122, Nofifications 1, Avg 122, Total 122
+May 12 20:39:29 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:39:29 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 37, 2's 37, Nofifications 2, Avg 79, Total 159
+May 12 20:39:30 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:39:30 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 153, 2's 153, Nofifications 3, Avg 104, Total 312
+May 12 20:39:33 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 152, 2's 152, Nofifications 4, Avg 116, Total 464
+May 12 20:39:36 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 153, 2's 153, Nofifications 5, Avg 123, Total 617
+May 12 20:39:39 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 152, 2's 152, Nofifications 6, Avg 128, Total 769
+May 12 20:39:42 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 153, 2's 153, Nofifications 7, Avg 131, Total 922
+May 12 20:39:45 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 152, 2's 152, Nofifications 8, Avg 134, Total 1074
+May 12 20:39:45 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Current KLevel 9, Has16Levels 1
+May 12 20:39:45 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Reading keyboard backlight...
+May 12 20:39:45 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backight Value from DSDT 0xed
+May 12 20:39:45 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: KB Auto not active 0, changeKBlight 1
+May 12 20:39:45 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:39:45 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALI Avg 134, Brightness Level to set 409(0x199) Current Level 512(0x200), Diff 103(0x67), Events 1, Timer 3000, KBlvl 12, Auto off Yes, ALS Brightness control Yes
+May 12 20:39:45 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:39:48 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 153, 2's 153, Nofifications 1, Avg 153, Total 153
+May 12 20:39:51 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 152, 2's 152, Nofifications 2, Avg 152, Total 305
+May 12 20:39:54 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:39:54 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 149, 2's 149, Nofifications 3, Avg 151, Total 454
+May 12 20:39:55 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:39:55 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 150, 2's 150, Nofifications 4, Avg 151, Total 604
+May 12 20:39:58 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 150, 2's 150, Nofifications 5, Avg 150, Total 754
+May 12 20:40:01 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 150, 2's 150, Nofifications 6, Avg 150, Total 904
+May 12 20:40:02 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:40:02 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 149, 2's 149, Nofifications 7, Avg 150, Total 1053
+May 12 20:40:03 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:40:03 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 149, 2's 149, Nofifications 8, Avg 150, Total 1202
+May 12 20:40:03 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Current KLevel 9, Has16Levels 1
+May 12 20:40:03 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Reading keyboard backlight...
+May 12 20:40:03 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backight Value from DSDT 0xed
+May 12 20:40:03 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: KB Auto not active 0, changeKBlight 1
+May 12 20:40:03 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:40:03 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALI Avg 150, Brightness Level to set 409(0x199) Current Level 512(0x200), Diff 103(0x67), Events 1, Timer 3000, KBlvl 12, Auto off Yes, ALS Brightness control Yes
+May 12 20:40:03 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:40:06 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:40:06 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 149, 2's 149, Nofifications 1, Avg 149, Total 149
+May 12 20:40:07 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:40:07 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 151, 2's 151, Nofifications 2, Avg 150, Total 300
+May 12 20:40:08 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:40:08 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 148, 2's 148, Nofifications 3, Avg 149, Total 448
+May 12 20:40:11 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 148, 2's 148, Nofifications 4, Avg 149, Total 596
+May 12 20:40:14 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 148, 2's 148, Nofifications 5, Avg 148, Total 744
+May 12 20:40:17 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 148, 2's 148, Nofifications 6, Avg 148, Total 892
+May 12 20:40:20 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 148, 2's 148, Nofifications 7, Avg 148, Total 1040
+May 12 20:40:23 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 147, 2's 147, Nofifications 8, Avg 148, Total 1187
+May 12 20:40:23 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Current KLevel 9, Has16Levels 1
+May 12 20:40:23 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Reading keyboard backlight...
+May 12 20:40:23 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backight Value from DSDT 0xed
+May 12 20:40:23 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: KB Auto not active 0, changeKBlight 1
+May 12 20:40:23 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:40:23 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALI Avg 148, Brightness Level to set 409(0x199) Current Level 512(0x200), Diff 103(0x67), Events 1, Timer 3000, KBlvl 12, Auto off Yes, ALS Brightness control Yes
+May 12 20:40:23 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:40:26 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 145, 2's 145, Nofifications 1, Avg 145, Total 145
+May 12 20:40:29 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 145, 2's 145, Nofifications 2, Avg 145, Total 290
+May 12 20:40:32 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 145, 2's 145, Nofifications 3, Avg 145, Total 435
+May 12 20:40:35 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 146, 2's 146, Nofifications 4, Avg 145, Total 581
+May 12 20:40:38 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 146, 2's 146, Nofifications 5, Avg 145, Total 727
+May 12 20:40:41 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 145, 2's 145, Nofifications 6, Avg 145, Total 872
+May 12 20:40:44 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 145, 2's 145, Nofifications 7, Avg 145, Total 1017
+May 12 20:40:47 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 145, 2's 145, Nofifications 8, Avg 145, Total 1162
+May 12 20:40:47 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Current KLevel 9, Has16Levels 1
+May 12 20:40:47 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Reading keyboard backlight...
+May 12 20:40:47 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backight Value from DSDT 0xed
+May 12 20:40:47 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: KB Auto not active 0, changeKBlight 1
+May 12 20:40:47 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:40:47 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALI Avg 145, Brightness Level to set 409(0x199) Current Level 512(0x200), Diff 103(0x67), Events 1, Timer 3000, KBlvl 12, Auto off Yes, ALS Brightness control Yes
+May 12 20:40:47 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:40:50 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 145, 2's 145, Nofifications 1, Avg 145, Total 145
+May 12 20:40:53 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 145, 2's 145, Nofifications 2, Avg 145, Total 290
+May 12 20:40:54 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:40:54 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 158, 2's 158, Nofifications 3, Avg 149, Total 448
+May 12 20:40:55 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:40:55 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 101, 2's 101, Nofifications 4, Avg 137, Total 549
+May 12 20:40:56 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:40:56 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 85, 2's 85, Nofifications 5, Avg 126, Total 634
+May 12 20:40:57 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:40:57 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 145, 2's 145, Nofifications 6, Avg 129, Total 779
+May 12 20:41:00 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 143, 2's 143, Nofifications 7, Avg 131, Total 922
+May 12 20:41:03 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 144, 2's 144, Nofifications 8, Avg 133, Total 1066
+May 12 20:41:03 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Current KLevel 9, Has16Levels 1
+May 12 20:41:03 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Reading keyboard backlight...
+May 12 20:41:03 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backight Value from DSDT 0xed
+May 12 20:41:03 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: KB Auto not active 0, changeKBlight 1
+May 12 20:41:03 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:41:03 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALI Avg 133, Brightness Level to set 409(0x199) Current Level 512(0x200), Diff 103(0x67), Events 1, Timer 3000, KBlvl 12, Auto off Yes, ALS Brightness control Yes
+May 12 20:41:03 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:41:06 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 143, 2's 143, Nofifications 1, Avg 143, Total 143
+May 12 20:41:09 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 145, 2's 145, Nofifications 2, Avg 144, Total 288
+May 12 20:41:12 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 145, 2's 145, Nofifications 3, Avg 144, Total 433
+May 12 20:41:15 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 145, 2's 145, Nofifications 4, Avg 144, Total 578
+May 12 20:41:18 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 142, 2's 142, Nofifications 5, Avg 144, Total 720
+May 12 20:41:21 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 143, 2's 143, Nofifications 6, Avg 143, Total 863
+May 12 20:41:24 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 143, 2's 143, Nofifications 7, Avg 143, Total 1006
+May 12 20:41:27 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:41:27 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 44, 2's 44, Nofifications 8, Avg 131, Total 1050
+May 12 20:41:27 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Current KLevel 9, Has16Levels 1
+May 12 20:41:27 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Reading keyboard backlight...
+May 12 20:41:27 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backight Value from DSDT 0xed
+May 12 20:41:27 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: KB Auto not active 0, changeKBlight 1
+May 12 20:41:27 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:41:27 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALI Avg 131, Brightness Level to set 409(0x199) Current Level 512(0x200), Diff 103(0x67), Events 1, Timer 3000, KBlvl 12, Auto off Yes, ALS Brightness control Yes
+May 12 20:41:27 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:41:30 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:41:30 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 51, 2's 51, Nofifications 1, Avg 51, Total 51
+May 12 20:41:33 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 52, 2's 52, Nofifications 2, Avg 51, Total 103
+May 12 20:41:36 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 48, 2's 48, Nofifications 3, Avg 50, Total 151
+May 12 20:41:36 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:41:36 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 48, 2's 48, Nofifications 4, Avg 49, Total 199
+May 12 20:41:37 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:41:37 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 58, 2's 58, Nofifications 5, Avg 51, Total 257
+May 12 20:41:38 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:41:38 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 3, 2's 3, Nofifications 6, Avg 43, Total 260
+May 12 20:41:39 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:41:39 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 65, 2's 65, Nofifications 7, Avg 46, Total 325
+May 12 20:41:40 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:41:40 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 110, 2's 110, Nofifications 8, Avg 54, Total 435
+May 12 20:41:40 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Current KLevel 9, Has16Levels 1
+May 12 20:41:40 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Reading keyboard backlight...
+May 12 20:41:40 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backight Value from DSDT 0xed
+May 12 20:41:40 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: KB Auto not active 0, changeKBlight 1
+May 12 20:41:40 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:41:40 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALI Avg 54, Brightness Level to set 409(0x199) Current Level 512(0x200), Diff 103(0x67), Events 1, Timer 3000, KBlvl 12, Auto off Yes, ALS Brightness control Yes
+May 12 20:41:40 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:41:41 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:41:41 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 2, 2's 2, Nofifications 1, Avg 2, Total 2
+May 12 20:41:42 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:41:42 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 117, 2's 117, Nofifications 2, Avg 59, Total 119
+May 12 20:41:43 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:41:43 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 0, 2's 0, Nofifications 3, Avg 39, Total 119
+May 12 20:41:44 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:41:44 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 103, 2's 103, Nofifications 4, Avg 55, Total 222
+May 12 20:41:45 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:41:45 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 19, 2's 19, Nofifications 5, Avg 48, Total 241
+May 12 20:41:48 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 16, 2's 16, Nofifications 6, Avg 42, Total 257
+May 12 20:41:51 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 23, 2's 23, Nofifications 7, Avg 40, Total 280
+May 12 20:41:52 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:41:52 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 26, 2's 26, Nofifications 8, Avg 38, Total 306
+May 12 20:41:52 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Current KLevel 9, Has16Levels 1
+May 12 20:41:52 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Reading keyboard backlight...
+May 12 20:41:52 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backight Value from DSDT 0xea
+May 12 20:41:52 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: KB Auto not active 1, changeKBlight 1
+May 12 20:41:52 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backlight level set to 0xf Status 0xf.
+May 12 20:41:52 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backlight turned on to Level 15 from keyboard/Touchpad interrupt
+May 12 20:41:52 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Checking Keyboard backlight idle timeout off
+May 12 20:41:52 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Reading keyboard backlight...
+May 12 20:41:52 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backight Value from DSDT 0xf
+May 12 20:41:52 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backlight idle timeout off 15
+May 12 20:41:52 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:41:52 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALI Avg 38, Brightness Level to set 204(0xcc) Current Level 512(0x200), Diff 308(0x134), Events 4, Timer 3000, KBlvl 15, Auto off No, ALS Brightness control Yes
+May 12 20:41:52 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:41:53 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:41:53 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 142, 2's 142, Nofifications 1, Avg 142, Total 142
+May 12 20:41:56 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 141, 2's 141, Nofifications 2, Avg 141, Total 283
+May 12 20:41:59 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 139, 2's 139, Nofifications 3, Avg 140, Total 422
+May 12 20:42:02 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Idle keyboard backlight off triggered after timeout 10000.
+May 12 20:42:02 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backlight level set to 0xfd Status 0xea.
+May 12 20:42:02 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 139, 2's 139, Nofifications 4, Avg 140, Total 561
+May 12 20:42:05 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 137, 2's 137, Nofifications 5, Avg 139, Total 698
+May 12 20:42:08 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 105, 2's 105, Nofifications 6, Avg 133, Total 803
+May 12 20:42:10 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:42:10 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 73, 2's 73, Nofifications 7, Avg 125, Total 876
+May 12 20:42:11 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Received Asus WMI Fn Key code 199(0xc7)
+May 12 20:42:11 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 141, 2's 141, Nofifications 8, Avg 127, Total 1017
+May 12 20:42:11 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Current KLevel 15, Has16Levels 1
+May 12 20:42:11 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Reading keyboard backlight...
+May 12 20:42:11 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backight Value from DSDT 0xea
+May 12 20:42:11 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: KB Auto not active 1, changeKBlight 1
+May 12 20:42:11 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backlight level set to 0xc Status 0xc.
+May 12 20:42:11 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backlight turned on to Level 12 from keyboard/Touchpad interrupt
+May 12 20:42:11 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Checking Keyboard backlight idle timeout off
+May 12 20:42:11 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Reading keyboard backlight...
+May 12 20:42:11 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backight Value from DSDT 0xc
+May 12 20:42:11 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backlight idle timeout off 12
+May 12 20:42:11 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:42:11 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALI Avg 127, Brightness Level to set 409(0x199) Current Level 512(0x200), Diff 103(0x67), Events 1, Timer 3000, KBlvl 12, Auto off No, ALS Brightness control Yes
+May 12 20:42:11 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Brightness from IOReg 512(0x200), Screen Brightness 512(0x200) , Panel Level 8
+May 12 20:42:14 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 139, 2's 139, Nofifications 1, Avg 139, Total 139
+May 12 20:42:15 MacBook-Air-de-Frederic.local WindowServer[135]: device_generate_desktop_screenshot: authw 0x0(0), shield 0x7fdc69e283a0(2001)
+May 12 20:42:15 MacBook-Air-de-Frederic.local identityservicesd[241]: <IMMacNotificationCenterManager: 0x7fc988537050>: notification observer: com.apple.iChat   notification: __CFNotification 0x7fc988745280 {name = _NSDoNotDisturbEnabledNotification}
+May 12 20:42:15 MacBook-Air-de-Frederic.local imagent[254]: <IMMacNotificationCenterManager: 0x7fd5d868bf00>: notification observer: com.apple.FaceTime   notification: __CFNotification 0x7fd5d84054d0 {name = _NSDoNotDisturbEnabledNotification}
+May 12 20:42:15 MacBook-Air-de-Frederic.local WindowServer[135]: device_generate_lock_screen_screenshot: authw 0x0(0)[inf, inf, 0, 0] shield 0x7fdc69e283a0(2001), dev [1920,1080]
+May 12 20:42:15 MacBook-Air-de-Frederic.local imagent[254]: <IMMacNotificationCenterManager: 0x7fd5d868bf00>:    NC Disabled: NO
+May 12 20:42:15 MacBook-Air-de-Frederic.local identityservicesd[241]: <IMMacNotificationCenterManager: 0x7fc988537050>:    NC Disabled: NO
+May 12 20:42:15 MacBook-Air-de-Frederic.local identityservicesd[241]: <IMMacNotificationCenterManager: 0x7fc988537050>:   DND Enabled: YES
+May 12 20:42:15 MacBook-Air-de-Frederic.local imagent[254]: <IMMacNotificationCenterManager: 0x7fd5d868bf00>:   DND Enabled: YES
+May 12 20:42:15 MacBook-Air-de-Frederic.local identityservicesd[241]: <IMMacNotificationCenterManager: 0x7fc988537050>: Updating enabled: NO   (Topics: (
+	))
+May 12 20:42:15 MacBook-Air-de-Frederic.local imagent[254]: <IMMacNotificationCenterManager: 0x7fd5d868bf00>: Updating enabled: NO   (Topics: (
+	))
+May 12 20:42:16 MacBook-Air-de-Frederic.local WindowServer[135]: CGXDisplayDidWakeNotification [26193582780405]: posting kCGSDisplayDidWake
+May 12 20:42:16 MacBook-Air-de-Frederic.local WindowServer[135]: handle_will_sleep_auth_and_shield_windows: Deferring.
+May 12 20:42:16 MacBook-Air-de-Frederic.local imagent[254]: <IMMacNotificationCenterManager: 0x7fd5d868bf00>: notification observer: com.apple.FaceTime   notification: __CFNotification 0x7fd5d87200d0 {name = _NSDoNotDisturbDisabledNotification}
+May 12 20:42:16 MacBook-Air-de-Frederic.local identityservicesd[241]: <IMMacNotificationCenterManager: 0x7fc988537050>: notification observer: com.apple.iChat   notification: __CFNotification 0x7fc988423790 {name = _NSDoNotDisturbDisabledNotification}
+May 12 20:42:16 MacBook-Air-de-Frederic.local identityservicesd[241]: <IMMacNotificationCenterManager: 0x7fc988537050>:    NC Disabled: NO
+May 12 20:42:16 MacBook-Air-de-Frederic.local imagent[254]: <IMMacNotificationCenterManager: 0x7fd5d868bf00>:    NC Disabled: NO
+May 12 20:42:16 MacBook-Air-de-Frederic.local imagent[254]: <IMMacNotificationCenterManager: 0x7fd5d868bf00>:   DND Enabled: NO
+May 12 20:42:16 MacBook-Air-de-Frederic.local identityservicesd[241]: <IMMacNotificationCenterManager: 0x7fc988537050>:   DND Enabled: NO
+May 12 20:42:16 MacBook-Air-de-Frederic.local imagent[254]: <IMMacNotificationCenterManager: 0x7fd5d868bf00>: Updating enabled: YES   (Topics: (
+	    "com.apple.ess",
+	    "com.apple.private.ac"
+	))
+May 12 20:42:16 MacBook-Air-de-Frederic.local identityservicesd[241]: <IMMacNotificationCenterManager: 0x7fc988537050>: Updating enabled: YES   (Topics: (
+	    "com.apple.private.alloy.icloudpairing",
+	    "com.apple.private.alloy.continuity.encryption",
+	    "com.apple.private.alloy.continuity.activity",
+	    "com.apple.private.alloy.idstransfers",
+	    "com.apple.private.ids",
+	    "com.apple.private.alloy.phonecontinuity",
+	    "com.apple.ess",
+	    "com.apple.madrid",
+	    "com.apple.private.alloy.continuity.auth",
+	    "com.apple.private.ac",
+	    "com.apple.private.alloy.idsremoteurlconnection",
+	    "com.apple.private.alloy.sms",
+	    "com.apple.private.alloy.screensharing",
+	    "com.apple.private.alloy.maps",
+	    "com.apple.private.alloy.callhistorysync",
+	    "com.apple.private.alloy.continuity.tethering"
+	))
+May 12 20:42:17 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 138, 2's 138, Nofifications 2, Avg 138, Total 277
+May 12 20:42:20 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 139, 2's 139, Nofifications 3, Avg 138, Total 416
+May 12 20:42:21 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Idle keyboard backlight off triggered after timeout 10000.
+May 12 20:42:21 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: Keyboard backlight level set to 0xfd Status 0xea.
+May 12 20:42:23 MacBook-Air-de-Frederic kernel[0]: AsusNBFnKeys: ALS value from DSDT 138, 2's 138, Nofifications 4, Avg 138, Total 554
+ 

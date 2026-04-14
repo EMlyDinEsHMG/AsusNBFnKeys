@@ -1,0 +1,576 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf340
+{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red234\green234\blue234;\red0\green0\blue255;\red254\green193\blue135;
+\red133\green0\blue135;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clcbpat1 \clwWidth15360\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sa120\qc
+
+\f0\b\fs64 \cf0 Writing a WMI driver - an introduction\
+\pard\intbl\itap1\pardeftab720\sa60\qc
+
+\fs32 \cf0 \cb2 June 8, 2010\
+\pard\intbl\itap1\pardeftab720
+
+\b0 \cf0 This article was contributed by Corentin Chary\
+\pard\intbl\itap1\pardeftab720\sa320
+{\field{\*\fldinst{HYPERLINK "http://en.wikipedia.org/wiki/Windows_Management_Instrumentation"}}{\fldrslt \cf3 \cb1 Windows Management Instrumentation (WMI)}}\cb1  is a set of extensions to the Windows Driver Model that provides an operating system interface for dealing with platform devices. WMI objects can be embedded within ACPI, a configuration which Microsoft recommends. Like ACPI, WMI is not really standardized and vendors still implement their own custom interfaces. In this article, I will, through the creation of a simple WMI driver, discuss the process of discovering WMI interfaces and working with them.\
+As WMI is embedded into ACPI tables, you should really start with {\field{\*\fldinst{HYPERLINK "http://lwn.net/Articles/367630/"}}{\fldrslt \cf3 Matthew's article on ACPI drivers}} before reading this one. You'll need to know how to extract, decompile and read your DSDT before going further. The DSDT (Discrete System Descriptor Table) lives in one of the ACPI tables provided to the operating system by the BIOS; it contains configuration information and executable code. On Linux, it can be found in 
+\f1\fs26 /sys/firmware/acpi/DSDT
+\f0\fs32 ; you will need to decompile it with 
+\f1\fs26 iasl
+\f0\fs32  using the 
+\f1\fs26 -d
+\f0\fs32  option. 
+\f1\fs26 iasl
+\f0\fs32  is the Intel ACPI compiler; it is probably already packaged in your favorite distribution, but if it's not you can always grab the source from {\field{\*\fldinst{HYPERLINK "http://www.acpica.org/downloads/"}}{\fldrslt \cf3 acpica.org}}.\
+In this article we'll focus on the history of the eeepc-wmi driver as an example; the DSDT used for this article (Eeepc 1201nl) can be downloaded {\field{\*\fldinst{HYPERLINK "http://lwn.net/Articles/391249/"}}{\fldrslt \cf3 here}}. The interesting part of the DSDT for making an ACPI or WMI driver is the ACPI device descriptions. They are defined with the 
+\f1\fs26 Device (XXXX)
+\f0\fs32  keyword, where 
+\f1\fs26 XXXX
+\f0\fs32  is the four-character name of the device. ACPI devices are also identified by an HID string using the same namespace as ISA PNP devices. This is why, most of the time, standardized HID names start with 
+\f1\fs26 PNP
+\f0\fs32 . For WMI Devices, this HID will always be 
+\f1\fs26 PNP0C14
+\f0\fs32  (or 
+\f1\fs26 pnp0c14
+\f0\fs32 ).\
+The first Eeepc systems were shipped with an ACPI device called 
+\f1\fs26 ASUS010
+\f0\fs32 ; Linux had an ACPI driver for that device called 
+\f1\fs26 eeepc-laptop
+\f0\fs32 . Then, ASUS started shipping a BIOS with "Windows 7 support", and 
+\f1\fs26 eeepc-laptop
+\f0\fs32  didn't want to load any more, because those BIOSes were disabling the 
+\f1\fs26 ASUS010
+\f0\fs32  device when Windows\'a07 was detected, and Linux has been identifying itself as Windows\'a07 since 2.6.32. No 
+\f1\fs26 eeepc-laptop
+\f0\fs32  driver means: no hotkeys, no rfkill, no LEDs, and sometimes even no backlight, because on some models you need to boot with 
+\f1\fs26 acpi_backlight=vendor
+\f0\fs32  if you want a working backlight.\
+A quick workaround was to boot with 
+\f1\fs26 acpi_osi="!Windows 2009"
+\f0\fs32  or 
+\f1\fs26 acpi_osi=Linux
+\f0\fs32 . But there's a better way: those BIOS updates also added a new ACPI device. It's easy to notice that this is a WMI device, thanks to the reserved _HID 
+\f1\fs26 PNP0C14
+\f0\fs32  and the explicit 
+\f1\fs26 ASUSWMI
+\f0\fs32  UID. From the DSDT:\
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs26 \cf0     Device (AMW0)\
+    \{\
+        Name (_HID, EisaId ("PNP0C14"))\
+    	Name (_UID, "ASUSWMI")\
+    	...\
+    \}\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\f0\fs32 \cf0 So we have a WMI device, and we need to find what we can do with it. The first thing to do is to dump the GUID mapping of the WMI device. A good way to do it is to use {\field{\*\fldinst{HYPERLINK "http://xf.iksaif.net/dev/wmidump.html"}}{\fldrslt \cf3 wmidump}}, it will parse the buffer returned by the _WDG method, and display it in a humanly readable form. The 
+\f1\fs26 _WDG
+\f0\fs32  method is defined in the WMI device and provides mapping for data blocks, events, and WMI methods. The result of _WDG evaluation is a buffer containing an array of structures, each entry describing a GUID.\
+Here is the output of wmidump for Eeepc 1201nl:\
+\
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs26 \cf0     97845ED0-4E6D-11DE-8A39-0800200C9A66:\
+        object_id: BC\
+        notify_id: 42\
+        reserved: 43\
+        instance_count: 1\
+        flags: 0x2 ACPI_WMI_METHOD \
+    466747A0-70EC-11DE-8A39-0800200C9A66:\
+        object_id: BD\
+        notify_id: 42\
+        reserved: 44\
+        instance_count: 1\
+        flags: 0x2 ACPI_WMI_METHOD \
+    ABBC0F72-8EA1-11D1-00A0-C90629100000:\
+        object_id: ?\
+        notify_id: D2\
+        reserved: 00\
+        instance_count: 1\
+        flags: 0x8 ACPI_WMI_EVENT \
+    05901221-D566-11D1-B2F0-00A0C9062910:\
+        object_id: MO\
+        notify_id: 4D\
+        reserved: 4F\
+        instance_count: 1\
+        flags: 0\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\f0\fs32 \cf0 We can see four different GUIDs. The first two are flagged with 
+\f1\fs26 ACPI_WMI_METHOD
+\f0\fs32 , while the third is flagged with 
+\f1\fs26 ACPI_WMI_EVENT
+\f0\fs32 . 
+\f1\fs26 ACPI_WMI_METHOD
+\f0\fs32  means that, in the same ACPI device, there is a 
+\f1\fs26 WMXX
+\f0\fs32  method, where 
+\f1\fs26 XX
+\f0\fs32  is the 
+\f1\fs26 object_id
+\f0\fs32  of this GUID. Thus, we will find a method called 
+\f1\fs26 WMBC
+\f0\fs32  for GUID 
+\f1\fs26 97845ED0-4E6D-11DE-8A39-0800200C9A66
+\f0\fs32 , and 
+\f1\fs26 WMBD
+\f0\fs32  for 
+\f1\fs26 466747A0-70EC-11DE-8A39-0800200C9A66
+\f0\fs32 . 
+\f1\fs26 ACPI_WMI_EVENT
+\f0\fs32  is used to describe a GUID that will send events; hotkeys for example are reported using WMI events on Eeepc systems.\
+WMI support in Linux is provided by the 
+\f1\fs26 wmi
+\f0\fs32  driver (
+\f1\fs26 CONFIG_ACPI_WMI
+\f0\fs32 ) and linux/acpi.h. Using this framework, we can write a basic WMI driver that will load only if a given GUID is available. For that, we will use 
+\f1\fs26 wmi_has_guid(const char *guid);
+\f0\fs32 . That function is easy to use: pass the GUID and it will return a true value if this GUID can be found. For this example we will use the 
+\f1\fs26 ABBC0F72-8EA1-11D1-00A0-C90629100000
+\f0\fs32 . Here is a typical initialization function for a WMI driver:\
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs26 \cf0     #define EEEPC_WMI_EVENT_GUID	"ABBC0F72-8EA1-11D1-00A0-C90629100000"\
+\
+    static int __init eeepc_wmi_init(void)\
+    \{\
+	if (!wmi_has_guid(EEEPC_WMI_EVENT_GUID)) \{\
+	    pr_warning("No known WMI GUID found\\n");\
+	    return -ENODEV;\
+	\}\
+	return 0;\
+    \}\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\f0\fs32 \cf0 Cool! A driver which does nothing :)\
+\
+\pard\intbl\itap1\pardeftab720\sa420
+
+\b \cf0 Events\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\b0 \cf0 Now, we want to catch hotkey events and send real input events when a hotkey is pressed. This requirement is common in platform drivers like eeepc-wmi and eeepc-laptop, so Dmitry Torokhov wrote the sparse keymap library to ease the implementation of such drivers. The 
+\f1\fs26 sparse-keymap
+\f0\fs32  module (
+\f1\fs26 CONFIG_INPUT_SPARSEKMAP
+\f0\fs32 ) allows the programmer to associate input events with custom codes (integers) and provides helpers to search a for code in a given keymap and report the resulting event through an input device.\
+Input events that you'll send to your input device are defined in 
+\f1\fs26 <linux/input.h>
+\f0\fs32 . Key events are prefixed with 
+\f1\fs26 KEY_
+\f0\fs32 , for example "
+\f1\fs26 a
+\f0\fs32 " is 
+\f1\fs26 KEY_A
+\f0\fs32 , F11 is 
+\f1\fs26 KEY_F11
+\f0\fs32 , and the key used to toggle a wireless Lan device is 
+\f1\fs26 KEY_WLAN
+\f0\fs32 . There are more than 380 distinct keys, so you should be able to find one that suits your needs.\
+Defining a sparse keymap is simple:\
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs26 \cf0     #include <input/sparse-keymap.h>\
+\
+    static const struct key_entry eeepc_wmi_keymap[] = \{\
+	\{ KE_KEY, 0x42, \{ KEY_F13 \} \},\
+        \{ KE_END, 0\},\
+    \};\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\f0\fs32 \cf0 Then all you need to do is to initialize an input device, bind it with your sparse keymap, and call 
+\f1\fs26 sparse_keymap_report_event()
+\f0\fs32  when you receive an event. I'll not describe the whole sparse-keymap API here (maybe in another article, who knows?), but if you want to see a (clean) real world example, please read 
+\f1\fs26 eeepc-wmi.c
+\f0\fs32 .\
+Let's go back to our main topic: how can we receive WMI events? 
+\f1\fs26 wmidump
+\f0\fs32  told us that one of the GUIDs was flagged ACPI_WMI_EVENT; this means that it is able to send events. To catch these events, we have to install a notify handler on this GUID with:\
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs26 \cf0     typedef void (*wmi_notify_handler) (u32 value, void *context);\
+    acpi_status wmi_install_notify_handler(const char *guid, \
+					   wmi_notify_handler handler,\
+				       	   void *data);\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\f0\fs32 \cf0 The 
+\f1\fs26 void *data
+\f0\fs32  argument passed to 
+\f1\fs26 wmi_install_notify_handler()
+\f0\fs32  can be retrieved in 
+\f1\fs26 void *context
+\f0\fs32  when the handler is called, and can be used to store context information. The important thing here is 
+\f1\fs26 value
+\f0\fs32 : you can pass this value to 
+\f1\fs26 wmi_get_event_data()
+\f0\fs32 , which fills an 
+\f1\fs26 acpi_buffer
+\f0\fs32  that can be cast into an 
+\f1\fs26 acpi_object
+\f0\fs32 . And most of the time for hotkeys, this object is an integer. Don't forget to call 
+\f1\fs26 wmi_install_notify_handler()
+\f0\fs32  
+\i after
+\i0  input and keymap initialization, because the handler is likely to use the input to device, so it has to be initialized.\
+Here is how to register (and unregister) the WMI handler. In this example, sparse_keymap and input device handling have been removed for clarity purposes.\
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs26 \cf0     static int __init eeepc_wmi_init(void)\
+    \{\
+	...\
+	err = eeepc_wmi_input_setup(); // Setup sparse_keymap and input device\
+	if (err)\
+	    return err;\
+\
+	status = wmi_install_notify_handler(EEEPC_WMI_EVENT_GUID,\
+					eeepc_wmi_notify, NULL);\
+	if (ACPI_FAILURE(status)) \{\
+	    ... // Free sparse_keymap and input device\
+	    return -ENODEV;\
+	\}\
+	return 0;\
+    \}\
+\
+    static void __exit eeepc_wmi_exit(void)\
+    \{\
+	wmi_remove_notify_handler(EEEPC_WMI_EVENT_GUID);\
+	... // Free sparse_keymap and input device\
+    \}\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\f0\fs32 \cf0 Below you'll see the code for the handler. Here we don't need the 
+\f1\fs26 context
+\f0\fs32  variable and we assume that 
+\f1\fs26 eeepc_wmi_input_dev
+\f0\fs32  is accessible.\
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs26 \cf0     static void eeepc_wmi_notify(u32 value, void *context)\
+    \{\
+	struct acpi_buffer response = \{ ACPI_ALLOCATE_BUFFER, NULL \};\
+	union acpi_object *obj;\
+	acpi_status status;\
+	int code;\
+\
+	status = wmi_get_event_data(value, &response);\
+	if (status != AE_OK) \{\
+	    pr_err("bad event status 0x%x\\n", status);\
+	    return;\
+	\}\
+\
+	obj = (union acpi_object *)response.pointer;\
+\
+	if (obj && obj->type == ACPI_TYPE_INTEGER) \{\
+		code = obj->integer.value;\
+\
+	    if (!sparse_keymap_report_event(eeepc_wmi_input_dev, code, 1, true))\
+		pr_info("Unknown key %x pressed\\n", code);\
+	\}\
+\
+	kfree(obj);\
+    \}\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\f0\fs32 \cf0 Our keymap is empty for the moment, and because we are lazy, we don't want to read the whole DSDT to see what kinds of events are reported. An alternative is to implement a basic driver with an empty keymap, and make it dump every event. Then press some buttons, check dmesg, and fill the keymap! For example, pressing Fn+F2 will show "Unknown key 0x5d pressed." Fn+F2 is the wireless toggle key, so let's fill the keymap accordingly:\
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs26 \cf0     static const struct key_entry eeepc_wmi_keymap[] = \{\
+	\{ KE_KEY, 0x5d, \{ KEY_WLAN \} \},\
+        \{ KE_END, 0\},\
+    \};\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\f0\fs32 \cf0 \
+\pard\intbl\itap1\pardeftab720\sa420
+
+\b \cf0 Methods\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\b0 \cf0 Now, you should be able to create a basic driver for WMI event handling. But what about setting the brightness, enabling a GPS device or blinking an LED? If you go back to the 
+\f1\fs26 wmidump
+\f0\fs32  output from the beginning, GUID 
+\f1\fs26 97845ED0-4E6D-11DE-8A39-0800200C9A66
+\f0\fs32  has the 
+\f1\fs26 ACPI_WMI_METHOD
+\f0\fs32  flag set, and its 
+\f1\fs26 object_id
+\f0\fs32  is 
+\f1\fs26 BC
+\f0\fs32 . That means that there is an ACPI 
+\f1\fs26 WMBC
+\f0\fs32  method that can be called. This function has three parameters; the first is a ULONG that has the instance index being executed; the second contains the method ID for the method being executed; and the third is a buffer that contains the input for the method call.\
+To call such a method, the WMI module provides a function called 
+\f1\fs26 wmi_evaluate_method()
+\f0\fs32 . It takes a GUID, an instance (we only have one here, see the output of 
+\f1\fs26 wmidump
+\f0\fs32 ), a method identifier and an input buffer. This buffer is used to pass custom parameters to the underlying method. It also takes an output buffer that will contain the return value of the method (if any).\
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs26 \cf0     acpi_status wmi_evaluate_method(const char *guid, u8 instance, u32 method_id,\
+                                    const struct acpi_buffer *in,\
+                                    struct acpi_buffer *out);\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\f0\fs32 \cf0 We will try to implement backlight control for this laptop, using WMI of course! Most of the time on x86 laptops, the backlight is handled by the generic ACPI video module. But sometimes, the generic ACPI backlight interface is broken, so you may want to use a vendor specific module to control the backlight. To do that, boot with 
+\f1\fs26 acpi_backlight=vendor
+\f0\fs32 . We won't talk a lot about the backlight class, and we'll focus on the WMI specific part. But if you want to know more, read the complete eeepc-wmi driver.\
+The first thing to do is to find how the backlight can be controlled. I won't describe the entire (painful) process of digging into the DSDT to find out how to control the backlight, and we will assume that the vendor gave you the WMI device documentation (and a pony!). But in a real world, you'll have to start from the 
+\f1\fs26 WMXX
+\f0\fs32  method of your device (where 
+\f1\fs26 XX
+\f0\fs32  is the 
+\f1\fs26 object_id
+\f0\fs32  of your GUID) to find something related to what you want.\
+To control devices on an Eeepc, the WMI interface exposes two methods. The first one is 
+\f1\fs26 DEVS
+\f0\fs32  which is used to set something in a device; its identifier is 
+\f1\fs26 0x53564544
+\f0\fs32  and it takes two parameters: the device ID and the value you want to set. For the backlight, this device ID is 
+\f1\fs26 0x00050012
+\f0\fs32  and the value is the brightness value (between zero and 15). This parameter can be translated into the following C structure;\
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs26 \cf0     struct bios_args \{\
+       u32     dev_id;\
+       u32     ctrl_param;\
+    \};\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\f0\fs32 \cf0 The second method is named 
+\f1\fs26 DSTS
+\f0\fs32 ; it can be used to get the state of a device. Its identifier is 
+\f1\fs26 0x53544344
+\f0\fs32  and it takes only one parameter: the device ID, which is the same used for 
+\f1\fs26 DEVS
+\f0\fs32 \
+\pard\intbl\itap1\pardeftab720
+\cf0 In summary: we have the GUID of our device, the ID of the methods we want to call and their custom magic parameters. Let's translate that to C and put it at the begining of our driver.\
+\
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs26 \cf0     #define EEEPC_WMI_MGMT_GUID    "97845ED0-4E6D-11DE-8A39-0800200C9A66"\
+    #define EEEPC_WMI_METHODID_DEVS        0x53564544\
+    #define EEEPC_WMI_METHODID_DSTS        0x53544344\
+    #define EEEPC_WMI_DEVID_BACKLIGHT      0x00050012\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\f0\fs32 \cf0 The next thing to do is to write two helpers for 
+\f1\fs26 DEVS
+\f0\fs32  and 
+\f1\fs26 DSTS
+\f0\fs32  because they can be used not only for the backlight, but also probably to implement rfkill for Bluetooth and WIFI.\
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs26 \cf0 DEVS
+\f0\fs32  is used to set a state for a given device. It takes a device ID, and a custom parameter, they are passed using the 
+\f1\fs26 bios_args
+\f0\fs32  structure in the 
+\f1\fs26 input
+\f0\fs32  buffer. This helper is pretty simple.\
+\
+
+\f1\fs26     static acpi_status eeepc_wmi_set_devstate(u32 dev_id, u32 ctrl_param)\
+    \{\
+       struct bios_args args = \{\
+           .dev_id = dev_id,\
+           .ctrl_param = ctrl_param,\
+       \};\
+       struct acpi_buffer input = \{ (acpi_size)sizeof(args), &args \};\
+\
+       return wmi_evaluate_method(EEEPC_WMI_MGMT_GUID, 1, \
+                                  EEEPC_WMI_METHODID_DEVS, &input, NULL);\
+    \}\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\f0\fs32 \cf0 Calling 
+\f1\fs26 DSTS
+\f0\fs32  is a little more complicated because it returns a value. In 
+\f1\fs26 wmi_evaluate_method()
+\f0\fs32  we put the 
+\f1\fs26 dev_id
+\f0\fs32  in 
+\f1\fs26 input
+\f0\fs32 , and create an 
+\f1\fs26 output
+\f0\fs32  buffer that will hold the return value. Then we check that the return value is really an integer (because we want an integer for brightness level, and we know that the DSDT should return one).\
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs26 \cf0     static acpi_status eeepc_wmi_get_devstate(u32 dev_id, u32 *ctrl_param)\
+    \{\
+	struct acpi_buffer input = \{ (acpi_size)sizeof(u32), &dev_id \};\
+	struct acpi_buffer output = \{ ACPI_ALLOCATE_BUFFER, NULL \};\
+	union acpi_object *obj;\
+       	acpi_status status;\
+       	u32 tmp = 0;\
+\
+       	status = wmi_evaluate_method(EEEPC_WMI_MGMT_GUID, 1, \
+       		 		     EEEPC_WMI_METHODID_DSTS, &input, &output);\
+       	if (ACPI_FAILURE(status))\
+            return status;\
+\
+       	obj = (union acpi_object *)output.pointer;\
+       	if (obj && obj->type == ACPI_TYPE_INTEGER)\
+            tmp = (u32)obj->integer.value;\
+	if (ctrl_param)\
+	    *ctrl_param = tmp;\
+\
+	kfree(obj);\
+	return status;\
+    \}\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\f0\fs32 \cf0 Now, we have two helpers that can easily be used to set and get the state for a given device. We know the 
+\f1\fs26 dev_id
+\f0\fs32  for the backlight, and we just need to link that with 
+\f1\fs26 backlight_device
+\f0\fs32  callbacks using 
+\f1\fs26 0x00050012
+\f0\fs32  as the dev_id.\
+\pard\intbl\itap1\pardeftab720
+
+\f1\fs26 \cf0     static int read_brightness(struct backlight_device *bd)\
+    \{\
+       	u32 ctrl_param;\
+       	acpi_status status;\
+\
+       	status = eeepc_wmi_get_devstate(EEEPC_WMI_DEVID_BACKLIGHT, &ctrl_param);\
+       	if (ACPI_FAILURE(status))\
+            return -1;\
+	return ctrl_param & 0xFF;\
+    \}\
+\
+    static int update_bl_status(struct backlight_device *bd)\
+    \{\
+	u32 ctrl_param;\
+       	acpi_status status;\
+\
+       	ctrl_param = bd->props.brightness;\
+	status = eeepc_wmi_set_devstate(EEEPC_WMI_DEVID_BACKLIGHT, ctrl_param);\
+	if (ACPI_FAILURE(status))\
+            return -1;\
+	return 0;\
+    \}\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\f0\fs32 \cf0 And we're done! Eeepc WMI device is a simple WMI device, but the principle should the same for others. I chose this one, because we waited a long time for this driver; Yong Wang finally wrote it for 2.6.35. This driver is young and really easy to read, so it is a good example.\
+\pard\intbl\itap1\pardeftab720\ri6820\sa160
+\cf0 \
+\pard\intbl\itap1\pardeftab720
+\cf0 ({\field{\*\fldinst{HYPERLINK "https://lwn.net/login?target=/Articles/391230/"}}{\fldrslt \cf3 Log in}} to post comments)\
+\
+\
+\pard\intbl\itap1\pardeftab720
+
+\b \cf0 \cb4 Writing a WMI driver - an introduction\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\b0 \cf0 \cb1 Posted Jun 10, 2010 7:48 UTC (Thu) by 
+\b evgeny
+\b0  (guest, #774) [{\field{\*\fldinst{HYPERLINK "http://lwn.net/Articles/391556/"}}{\fldrslt \cf3 Link}}]\
+\pard\intbl\itap1\pardeftab720
+\cf5 > On Linux, it can be found in /sys/firmware/acpi/DSDT\cf0 \
+\pard\intbl\itap1\pardeftab720\sa320
+\cf0 Here (2.6.30), it's in /sys/firmware/acpi/tables/DSDT\
+\
+\pard\intbl\itap1\pardeftab720
+
+\b \cf0 \cb4 Writing a WMI driver - an introduction\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\b0 \cf0 \cb1 Posted Jun 10, 2010 10:25 UTC (Thu) by 
+\b hadess
+\b0  (guest, #24252) [{\field{\*\fldinst{HYPERLINK "http://lwn.net/Articles/391571/"}}{\fldrslt \cf3 Link}}]\
+\pard\intbl\itap1\pardeftab720
+\cf0 How does one tie the UUIDs of the different objects in the DSDT to what they're supposed to do? Is it a load of guesswork?\
+\pard\intbl\itap1\pardeftab720\sa320
+\cf0 \
+\pard\intbl\itap1\pardeftab720
+
+\b \cf0 \cb4 Writing a WMI driver - an introduction\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\b0 \cf0 \cb1 Posted Jun 10, 2010 12:25 UTC (Thu) by 
+\b iksaif
+\b0  (subscriber, #54284) [{\field{\*\fldinst{HYPERLINK "http://lwn.net/Articles/391600/"}}{\fldrslt \cf3 Link}}]\
+\pard\intbl\itap1\pardeftab720
+\cf0 Yep, it is if you don't have any kind of documentation.\
+But the flags can help you (ACPI_WMI_METHOD, ACPI_WMI_EVENT).\
+\pard\intbl\itap1\pardeftab720\sa320
+\cf0 A debug option was added to wmi.ko last month, the module will dump wmi informations on load, and it uses wmidump output format. So you don't have to search _WDG in your DSDT.\
+But even when you have found the correct UUID, you'll need to find/guess events code and methods id ...\
+\
+\pard\intbl\itap1\pardeftab720
+
+\b \cf0 \cb4 Writing a WMI driver - an introduction\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\b0 \cf0 \cb1 Posted Jun 10, 2010 21:46 UTC (Thu) by 
+\b cathectic
+\b0  (subscriber, #40543) [{\field{\*\fldinst{HYPERLINK "http://lwn.net/Articles/391709/"}}{\fldrslt \cf3 Link}}]\
+\pard\intbl\itap1\pardeftab720
+\cf0 Basically, yes. Unless you can get your hands on the relevant MOF, which is a good step in the right direction in at least spelling out what the methods are for, even if it doesn't tell you the right arguments to pass (for newer Acer laptops, it was dug out of the Windows binaries using 'string').\
+\pard\intbl\itap1\pardeftab720\sa320
+\cf0 One way I've used in the past was to use the Windows Kernel Debugger to trace ACPI and replicate the function calls.\
+In some cases, you can also guess based on the naming conventions used in the DSDT, and/ or seeing how arguments are handled when the are passed in.\
+\
+\pard\intbl\itap1\pardeftab720
+
+\b \cf0 \cb4 Writing a WMI driver - an introduction\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\b0 \cf0 \cb1 Posted Dec 17, 2011 23:58 UTC (Sat) by 
+\b gluth
+\b0  (guest, #81865) [{\field{\*\fldinst{HYPERLINK "http://lwn.net/Articles/472636/"}}{\fldrslt \cf3 Link}}]\
+\pard\intbl\itap1\pardeftab720
+\cf0 Thanks for a very good article! I have decompiled MOF object from this article DSDT and it is available to download here:\
+\pard\intbl\itap1\pardeftab720\sa320
+{\field{\*\fldinst{HYPERLINK "http://dl.dropbox.com/u/4268973/asus.h"}}{\fldrslt \cf3 http://dl.dropbox.com/u/4268973/asus.h}}\
+It is fun to compare it with article author findings. It gives also a peek how informative this field of DSDT is.\
+\
+\pard\intbl\itap1\pardeftab720
+
+\b \cf0 \cb4 Writing a WMI driver - an introduction\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\b0 \cf0 \cb1 Posted Jan 20, 2012 17:04 UTC (Fri) by 
+\b iksaif
+\b0  (subscriber, #54284) [{\field{\*\fldinst{HYPERLINK "http://lwn.net/Articles/476364/"}}{\fldrslt \cf3 Link}}]\
+\pard\intbl\itap1\pardeftab720
+\cf0 How did you generate this file exactly ? I'd like to know more about it.\
+\pard\intbl\itap1\pardeftab720\sa320
+\cf0 \
+\pard\intbl\itap1\pardeftab720
+
+\b \cf0 \cb4 Writing a WMI driver - an introduction\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\b0 \cf0 \cb1 Posted Jan 21, 2012 11:23 UTC (Sat) by 
+\b iksaif
+\b0  (subscriber, #54284) [{\field{\*\fldinst{HYPERLINK "http://lwn.net/Articles/476474/"}}{\fldrslt \cf3 Link}}]\
+\pard\intbl\itap1\pardeftab720
+\cf0 Answer to myself:\
+- {\field{\*\fldinst{HYPERLINK "http://glucik.blogspot.com/2011/12/mof-decompilation.html"}}{\fldrslt \cf3 http://glucik.blogspot.com/2011/12/mof-decompilation.html}}\
+- {\field{\*\fldinst{HYPERLINK "http://msdn.microsoft.com/en-us/library/windows/hardware/ff565588"}}{\fldrslt \cf3 http://msdn.microsoft.com/en-us/library/windows/hardware/...}}(v=vs.85).aspx\
+\pard\intbl\itap1\pardeftab720\sa320
+\cf0 \
+\pard\intbl\itap1\pardeftab720
+
+\b \cf0 \cb4 Writing a WMI driver - an introduction\
+\pard\intbl\itap1\pardeftab720\sa320
+
+\b0 \cf0 \cb1 Posted Jan 24, 2012 12:34 UTC (Tue) by 
+\b gluth
+\b0  (guest, #81865) [{\field{\*\fldinst{HYPERLINK "http://lwn.net/Articles/476915/"}}{\fldrslt \cf3 Link}}]\
+\pard\intbl\itap1\pardeftab720
+\cf0 Right I'm not subscribed to LWN, and do not have unread comments notification, and I thought that it is a little bit lame to paste your own blog link in comment.\
+\pard\intbl\itap1\pardeftab720\sa320
+\cf0 I hope it was helpful for you.\cell \lastrow\row
+}
