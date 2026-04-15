@@ -15,9 +15,10 @@ It enables Fn key events and sensor data integration that are not natively suppo
 
 - Fn key event handling  
 - Ambient Light Sensor (ALS) integration  
-- Partial keyboard backlight support  
-
+- Partial keyboard backlight support
 ---
+
+For more details check GUIDEME.md
 
 ## Technical Details
 
